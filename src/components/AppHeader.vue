@@ -6,7 +6,7 @@ export default {
 
 <template>
     <header class="p-2">
-        <nav class="d-flex gap-2">
+        <nav class="d-flex gap-2 h-100">
             <h1>BoolBnb</h1>
             <ul class="list-unstyled">
                 <li>
