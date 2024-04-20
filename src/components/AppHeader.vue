@@ -10,7 +10,10 @@ export default {
             <h1>BoolBnb</h1>
             <ul class="list-unstyled">
                 <li>
-                    <RouterLink to="">Home</routerlink>
+                    <RouterLink to="">
+                        <font-awesome-icon :icon="'fas fa-house'" />
+                        Home
+                    </routerlink>
                 </li>
             </ul>
         </nav>
