@@ -11,7 +11,7 @@ export default {
             <ul class="list-unstyled">
                 <li>
                     <RouterLink to="">
-                        <font-awesome-icon :icon="'fas fa-computer'" />
+                        <font-awesome-icon :icon="'fas fa-house'" />
                         Home
                     </routerlink>
                 </li>

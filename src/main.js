@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { faMugSaucer } from '@fortawesome/free-solid-svg-icons'
 import { faPersonSwimming } from '@fortawesome/free-solid-svg-icons'
 import { faWifi } from '@fortawesome/free-solid-svg-icons'
@@ -57,7 +59,9 @@ library.add(faMugSaucer,
     faFan,
     faComputer,
     faFileLines,
-    faKitMedical
+    faKitMedical,
+    faMagnifyingGlass,
+    faHouse
 );
 createApp(App)
     .component('AppLoader', AppLoader)
