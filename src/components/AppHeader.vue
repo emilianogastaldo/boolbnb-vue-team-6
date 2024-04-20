@@ -23,6 +23,7 @@ export default {
 <style lang="scss" scoped>
 header {
     height: 80px;
+    box-shadow: 0 10px 10px lightgray;
 
     ul {
         display: flex;
