@@ -5,9 +5,9 @@ import axios from 'axios';
 const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'HomePage',
+    components: { BaseCarousel },
     data: () => ({
-        flats: [],
-        components: { BaseCarousel },
+        flats: {},
         store
     }),
     methods: {

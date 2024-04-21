@@ -1,15 +1,23 @@
 <script>
 export default {
     name: 'BaseCarousel',
-    props: [flats = Array],
+    props: { flats: Object },
+
+    methods: {
+        createPath(img) {
+            const url = new URL(this.flats.image, import.meta.url);
+            return url;
+
+        }
+    }
 }
 </script>
 
 <template>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div v-for="flat in flats" :key="flat.id" class="carousel-item active">
-                <img src="flat.image" class="d-block w-100" alt="flat.title">
+            <div v-for="flat in flats.data" :key="flat.id" class="carousel-item active">
+                <img :src="createPath(flat.image)" class="d-block w-100" alt="flat.title">
             </div>
 
         </div>
