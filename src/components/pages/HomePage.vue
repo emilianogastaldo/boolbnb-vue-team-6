@@ -1,6 +1,15 @@
 <script>
 export default {
-    name: 'HomePage'
+    name: 'HomePage',
+    data: () => ({
+        flats: [],
+
+    }),
+    methods: {
+        fetchFlats() {
+
+        }
+    }
 }
 </script>
 
