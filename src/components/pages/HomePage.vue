@@ -7,7 +7,7 @@ export default {
     name: 'HomePage',
     components: { BaseCarousel },
     data: () => ({
-        flats: {},
+        flats: [],
         store
     }),
     methods: {

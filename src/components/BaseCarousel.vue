@@ -1,11 +1,16 @@
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
     name: 'BaseCarousel',
-    props: { flats: Object },
+    props: {
+        flats: Object,
+        isDetail: Boolean
+    },
 
     methods: {
         createPath(img) {
-            const url = new URL(this.flats.image, import.meta.url);
+            const url = new URL(this.flats['image'], import.meta.url);
             return url;
 
         }
@@ -14,22 +19,5 @@ export default {
 </script>
 
 <template>
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div v-for="flat in flats.data" :key="flat.id" class="carousel-item active">
-                <img :src="createPath(flat.image)" class="d-block w-100" alt="flat.title">
-            </div>
 
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
 </template>
