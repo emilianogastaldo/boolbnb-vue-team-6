@@ -42,8 +42,8 @@ export default {
     transition: transform 1s ease-in-out;
 
     figure {
-        width: 200px;
-        height: 300px;
+        width: 150px;
+        height: 200px;
         overflow: hidden;
         cursor: pointer;
 
