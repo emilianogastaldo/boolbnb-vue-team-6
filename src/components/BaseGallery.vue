@@ -2,9 +2,9 @@
 import { RouterLink } from 'vue-router';
 
 export default {
-    name: 'BaseCarousel',
+    name: 'BaseGallery',
     props: {
-        flats: Object,
+        flats: Array,
         isDetail: Boolean
     },
 
