@@ -44,6 +44,9 @@ export default {
     flex-wrap: nowrap;
     overflow: hidden;
     transition: transform 1s ease-in-out;
+    position: relative;
+
+
 
     figure {
         width: 150px;
