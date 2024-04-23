@@ -1,11 +1,11 @@
 <script>
 import { store } from '../../data/store.js';
-import BaseCarousel from '../BaseCarousel.vue';
+import BaseGallery from '../BaseGallery.vue';
 import axios from 'axios';
 const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'HomePage',
-    components: { BaseCarousel },
+    components: { BaseGallery },
     data: () => ({
         flats: [],
         store
@@ -26,7 +26,7 @@ export default {
                 console.log(data);
                 // riassegno i dati al mio array di appartamenti vuoto
                 this.flats = data;
-            } catch {
+            } catch (err) {
                 // segnalo un eventuale errore
                 console.error(err);
             }
@@ -41,5 +41,5 @@ export default {
 </script>
 
 <template>
-    <BaseCarousel :flats="flats" />
+    <BaseGallery :flats="flats" />
 </template>
