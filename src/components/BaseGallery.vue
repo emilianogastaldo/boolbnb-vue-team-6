@@ -5,7 +5,6 @@ export default {
     name: 'BaseGallery',
     props: {
         flats: Array,
-        isDetail: Boolean
     },
 
     methods: {
