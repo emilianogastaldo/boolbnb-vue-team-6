@@ -29,6 +29,9 @@ export default {
                     <h5>{{ flat.title }}</h5>
                     <address>{{ flat.address }}</address>
                 </figcaption>
+                <div class="heart">
+                    <font-awesome-icon :icon="'fas fa-heart'" />
+                </div>
             </div>
         </div>
     </div>

@@ -30,6 +30,9 @@ import { faFan } from '@fortawesome/free-solid-svg-icons'
 import { faComputer } from '@fortawesome/free-solid-svg-icons'
 import { faFileLines } from '@fortawesome/free-solid-svg-icons'
 import { faKitMedical } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import App from './App.vue'
 import AppLoader from './components/AppLoader.vue';
 import router from './assets/router/index.js';
@@ -61,7 +64,10 @@ library.add(faMugSaucer,
     faFileLines,
     faKitMedical,
     faMagnifyingGlass,
-    faHouse
+    faHouse,
+    faHeart,
+    faChevronRight,
+    faChevronLeft
 );
 createApp(App)
     .component('AppLoader', AppLoader)
