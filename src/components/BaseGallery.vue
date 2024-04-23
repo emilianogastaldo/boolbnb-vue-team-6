@@ -25,6 +25,10 @@ export default {
                 <figure>
                     <img class="img-fluid" src="" alt="{{ flat.title }}">
                 </figure>
+                <figcaption>
+                    <h5>{{ flat.title }}</h5>
+                    <address>{{ flat.address }}</address>
+                </figcaption>
             </div>
         </div>
     </div>
