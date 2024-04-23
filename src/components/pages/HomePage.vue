@@ -1,11 +1,12 @@
 <script>
 import { store } from '../../data/store.js';
 import BaseGallery from '../BaseGallery.vue';
+import SearchForm from '../SearchForm.vue';
 import axios from 'axios';
 const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'HomePage',
-    components: { BaseGallery },
+    components: { BaseGallery, SearchForm },
     data: () => ({
         flats: [],
         store
@@ -42,4 +43,5 @@ export default {
 
 <template>
     <BaseGallery :flats="flats" />
+    <SearchForm />
 </template>
