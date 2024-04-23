@@ -32,6 +32,9 @@ export default {
                 <div class="heart">
                     <font-awesome-icon :icon="'fas fa-heart'" />
                 </div>
+                <div class="heart d-none">
+                    <font-awesome-icon :icon="'fas fa-heart'" />
+                </div>
             </div>
         </div>
     </div>
@@ -57,6 +60,16 @@ export default {
                 scale: 1.1;
             }
         }
+    }
+}
+
+.col {
+    position: relative;
+
+    .heart {
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }
 </style>
