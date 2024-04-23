@@ -14,6 +14,7 @@ export default {
             return url;
 
         }
+
     }
 }
 </script>
@@ -29,10 +30,7 @@ export default {
                     <h5>{{ flat.title }}</h5>
                     <address>{{ flat.address }}</address>
                 </figcaption>
-                <div class="heart">
-                    <font-awesome-icon :icon="'fas fa-heart'" />
-                </div>
-                <div class="heart d-none">
+                <div class="heart" @click="toggleHeart">
                     <font-awesome-icon :icon="'fas fa-heart'" />
                 </div>
             </div>
@@ -70,6 +68,11 @@ export default {
         position: absolute;
         right: 0;
         top: 0;
+        cursor: pointer;
+
+        .red {
+            color: red;
+        }
     }
 }
 </style>
