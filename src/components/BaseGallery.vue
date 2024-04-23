@@ -19,5 +19,37 @@ export default {
 </script>
 
 <template>
-
+    <div class="jumbotron my-3">
+        <div class="row">
+            <div class="col" v-for="flat in flats" :key="flat.id">
+                <figure>
+                    <img class="img-fluid" src="" alt="{{ flat.title }}">
+                </figure>
+            </div>
+        </div>
+    </div>
 </template>
+
+<style lang="scss" scoped>
+/* row */
+.row {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    transition: transform 1s ease-in-out;
+
+    figure {
+        width: 200px;
+        height: 300px;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+            transition: scale 0.7s ease;
+
+            &:hover {
+                scale: 1.1;
+            }
+        }
+    }
+}
+</style>
