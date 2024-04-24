@@ -12,7 +12,7 @@ export default {
         // per creare un url assoluto per le immagini, sarebbe bello se funzionasse
         createPath(img) {
             const url = new URL(img, import.meta.url);
-            return url;
+            return url.href;
 
         },
 
@@ -27,7 +27,7 @@ export default {
         <div class="row">
             <div class="col" v-for="flat in flats" :key="flat.id">
                 <figure>
-                    <img class="img-fluid" src="" alt="{{ flat.title }}">
+                    <img class="img-fluid" src="createPath()" alt="{{ flat.title }}">
                 </figure>
                 <figcaption>
                     <h5>{{ flat.title }}</h5>
