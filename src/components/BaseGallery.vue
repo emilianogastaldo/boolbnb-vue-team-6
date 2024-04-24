@@ -3,9 +3,7 @@ import { RouterLink } from 'vue-router';
 
 export default {
     name: 'BaseGallery',
-    data: () => ({
-        isClicked: false
-    }),
+
     props: {
         flats: Array,
     },
@@ -13,16 +11,14 @@ export default {
     methods: {
         // per creare un url assoluto per le immagini, sarebbe bello se funzionasse
         createPath(img) {
-            const url = new URL(this.flats['image'], import.meta.url);
+            const url = new URL(this.flats.image, import.meta.url);
             return url;
 
         },
-        // per cambiare il colore del cuore
-        toggleHeart() {
-            isClicked = true;
-        }
 
-    }
+
+    },
+
 }
 </script>
 
@@ -37,7 +33,7 @@ export default {
                     <h5>{{ flat.title }}</h5>
                     <address>{{ flat.address }}</address>
                 </figcaption>
-                <div class="heart" :class="{ 'red': isClicked }" @click="toggleHeart">
+                <div class="heart">
                     <font-awesome-icon :icon="'fas fa-heart'" />
                 </div>
             </div>
