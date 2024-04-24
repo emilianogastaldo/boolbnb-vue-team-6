@@ -9,7 +9,7 @@ export default {
 
 
 <template>
-    <form @click.prevent="">
+    <form @submit.prevent="">
         <div class="input-box">
             <input type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
             <button>
