@@ -20,10 +20,10 @@ export default {
         <nav class="p-2">
             <ul class="list-unstyled d-flex gap-2">
                 <li>
-                    <a class="text-decoration-none" href="http://127.0.0.1:8000/login">Accedi</a>
+                    <a class="text-decoration-none" href="http://localhost:8000/login">Accedi</a>
                 </li>
                 <li>
-                    <a class="text-decoration-none" href="http://127.0.0.1:8000/register">Registrati</a>
+                    <a class="text-decoration-none" href="http://localhost:8000/register">Registrati</a>
                 </li>
             </ul>
         </nav>
