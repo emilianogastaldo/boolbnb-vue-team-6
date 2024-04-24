@@ -44,9 +44,9 @@ export default {
 <style lang="scss" scoped>
 /* row */
 .row {
-    flex-wrap: nowrap;
-    overflow: hidden;
-    transition: transform 1s ease-in-out;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
     position: relative;
 
 
