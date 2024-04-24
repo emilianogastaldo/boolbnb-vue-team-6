@@ -11,7 +11,7 @@ export default {
     methods: {
         // per creare un url assoluto per le immagini, sarebbe bello se funzionasse
         createPath(img) {
-            const url = new URL(this.flats.image, import.meta.url);
+            const url = new URL(img, import.meta.url);
             return url;
 
         },
