@@ -3,18 +3,22 @@ import { RouterLink } from 'vue-router';
 
 export default {
     name: 'BaseGallery',
+
     props: {
         flats: Array,
     },
 
     methods: {
+        // per creare un url assoluto per le immagini, sarebbe bello se funzionasse
         createPath(img) {
-            const url = new URL(this.flats['image'], import.meta.url);
+            const url = new URL(this.flats.image, import.meta.url);
             return url;
 
-        }
+        },
 
-    }
+
+    },
+
 }
 </script>
 
@@ -29,7 +33,7 @@ export default {
                     <h5>{{ flat.title }}</h5>
                     <address>{{ flat.address }}</address>
                 </figcaption>
-                <div class="heart" @click="toggleHeart">
+                <div class="heart">
                     <font-awesome-icon :icon="'fas fa-heart'" />
                 </div>
             </div>
@@ -40,9 +44,9 @@ export default {
 <style lang="scss" scoped>
 /* row */
 .row {
-    flex-wrap: nowrap;
-    overflow: hidden;
-    transition: transform 1s ease-in-out;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
     position: relative;
 
 
