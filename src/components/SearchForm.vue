@@ -11,7 +11,15 @@ export default {
 <template>
     <form @click.prevent="">
         <div class="input-box">
-            <input type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+            <label for="address">Indirizzo</label>
+            <input id="address" type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+            <label for="address">Numero Stanze</label>
+            <input id="address" type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+            <label for="address">Indirizzo</label>
+            <input id="address" type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+            <label for="address">Indirizzo</label>
+            <input id="address" type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+
             <button>
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
             </button>
