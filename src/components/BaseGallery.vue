@@ -9,15 +9,8 @@ export default {
     },
 
     methods: {
-        // per creare un url assoluto per le immagini, sarebbe bello se funzionasse
-        createPath(img) {
-            const url = new URL(`../assets/img/${img}`, import.meta.url);
-            return url.href;
 
-        },
-
-
-    },
+    }
 
 }
 </script>
