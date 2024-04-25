@@ -2,7 +2,12 @@
 export default {
     name: 'SearchForm',
     data: () => ({
-        search: ''
+        form: {
+            address: '',
+            rooms: '',
+            bathrooms: '',
+            services: ''
+        }
     })
 }
 </script>
@@ -13,21 +18,20 @@ export default {
         <div class="input-box">
             <div>
                 <label for="address">Indirizzo</label>
-                <input id="address" type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+                <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..." @keyup="">
             </div>
             <div>
                 <label for="rooms">Stanze</label>
-                <input id="rooms" type="number" min="1" step="1" v-model.trim="search" placeholder="Stanze..."
-                    @keyup="">
+                <input id="rooms" type="number" min="1" step="1" v-model.trim="rooms" placeholder="Stanze..." @keyup="">
             </div>
             <div>
                 <label for="bathrooms">Bagni</label>
-                <input id="bathrooms" type="number" min="1" step="1" v-model.trim="search" placeholder="Bagni..."
+                <input id="bathrooms" type="number" min="1" step="1" v-model.trim="bathrooms" placeholder="Bagni..."
                     @keyup="">
             </div>
             <div>
                 <label for="services">Servizi</label>
-                <input id="services" type="text" v-model.trim="search" placeholder="Servizi..." @keyup="">
+                <input id="services" type="text" v-model.trim="services" placeholder="Servizi..." @keyup="">
             </div>
 
             <button>
