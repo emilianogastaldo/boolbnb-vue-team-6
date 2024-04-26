@@ -4,12 +4,8 @@ const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'SearchForm',
     data: () => ({
-        form: {
-            address: '',
-            rooms: '',
-            bathrooms: '',
-            services: ''
-        }
+        address: '',
+
     }),
     emits: ['sent-form']
 }
@@ -24,20 +20,7 @@ export default {
                 <input id="address" type="text" v-model.trim="form.address" placeholder="Cerca un appartamento..."
                     @keyup="">
             </div>
-            <div>
-                <label for="rooms">Stanze</label>
-                <input id="rooms" type="number" min="1" step="1" v-model.trim="form.rooms" placeholder="Stanze..."
-                    @keyup="">
-            </div>
-            <div>
-                <label for="bathrooms">Bagni</label>
-                <input id="bathrooms" type="number" min="1" step="1" v-model.trim="form.bathrooms"
-                    placeholder="Bagni..." @keyup="">
-            </div>
-            <div>
-                <label for="services">Servizi</label>
-                <input id="services" type="text" v-model.trim="form.services" placeholder="Servizi..." @keyup="">
-            </div>
+
 
             <button>
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
@@ -71,7 +54,7 @@ input {
     padding: 10px 30px 10px 10px;
 
     div {
-        border-right: 1px solid black;
+
         padding-left: 10px;
     }
 }
@@ -82,7 +65,7 @@ button {
     background: none;
     cursor: pointer;
     position: absolute;
-    top: 25px;
+    top: 15px;
     right: 5px;
 }
 </style>

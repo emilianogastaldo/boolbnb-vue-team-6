@@ -33,12 +33,12 @@ export default {
             }
             store.isLoading = false;
         },
-        async sendform(form) {
-            console.log(form);
+        async sendform(address) {
+            console.log(address);
             // attivo il loader
             store.isLoading = true;
             try {
-                const res = await axios.get(`${baseUri}?query=${form.address}&${form.rooms}&${form.bathrooms}&${form.services}`);
+                const res = await axios.get(`${baseUri}?address=${address}`);
                 // destrutturo i dati dalla risposta
                 const { data } = res;
                 // stampo i risultati in console
