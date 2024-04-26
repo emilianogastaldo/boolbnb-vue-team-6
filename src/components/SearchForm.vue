@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'SearchForm',
     data: () => ({
@@ -8,30 +10,33 @@ export default {
             bathrooms: '',
             services: ''
         }
-    })
+    }),
+    emits: ['sent-form']
 }
 </script>
 
 
 <template>
-    <form @click.prevent="">
+    <form @submit.prevent="$emit('sent-form', form)">
         <div class="input-box">
             <div>
                 <label for="address">Indirizzo</label>
-                <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..." @keyup="">
-            </div>
-            <div>
-                <label for="rooms">Stanze</label>
-                <input id="rooms" type="number" min="1" step="1" v-model.trim="rooms" placeholder="Stanze..." @keyup="">
-            </div>
-            <div>
-                <label for="bathrooms">Bagni</label>
-                <input id="bathrooms" type="number" min="1" step="1" v-model.trim="bathrooms" placeholder="Bagni..."
+                <input id="address" type="text" v-model.trim="form.address" placeholder="Cerca un appartamento..."
                     @keyup="">
             </div>
             <div>
+                <label for="rooms">Stanze</label>
+                <input id="rooms" type="number" min="1" step="1" v-model.trim="form.rooms" placeholder="Stanze..."
+                    @keyup="">
+            </div>
+            <div>
+                <label for="bathrooms">Bagni</label>
+                <input id="bathrooms" type="number" min="1" step="1" v-model.trim="form.bathrooms"
+                    placeholder="Bagni..." @keyup="">
+            </div>
+            <div>
                 <label for="services">Servizi</label>
-                <input id="services" type="text" v-model.trim="services" placeholder="Servizi..." @keyup="">
+                <input id="services" type="text" v-model.trim="form.services" placeholder="Servizi..." @keyup="">
             </div>
 
             <button>
