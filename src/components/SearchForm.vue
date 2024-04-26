@@ -1,17 +1,29 @@
 <script>
+import axios from 'axios';
+const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'SearchForm',
     data: () => ({
-        search: ''
-    })
+        address: '',
+
+    }),
+    emits: ['sent-form']
 }
 </script>
 
 
 <template>
-    <form @submit.prevent="">
+
+    <form @submit.prevent="$emit('sent-form', address)">
+
         <div class="input-box">
-            <input type="text" v-model.trim="search" placeholder="Cerca un appartamento..." @keyup="">
+            <div>
+                <label for="address">Indirizzo</label>
+                <input id="address" type="text" v-model.trim="form.address" placeholder="Cerca un appartamento..."
+                    @keyup="">
+            </div>
+
+
             <button>
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
             </button>
@@ -26,17 +38,27 @@ form {
     bottom: 50px;
     right: 50%;
     transform: translateX(50%);
+    background-color: white;
+    border-radius: 30px
 }
 
 input {
-    padding: 5px 35px 5px 10px;
+    padding: 5px;
     border: none;
     border-radius: 15px;
+
 }
 
 .input-box {
     position: relative;
+    display: flex;
+    flex-basis: 25%;
+    padding: 10px 30px 10px 10px;
 
+    div {
+
+        padding-left: 10px;
+    }
 }
 
 button {
@@ -45,7 +67,7 @@ button {
     background: none;
     cursor: pointer;
     position: absolute;
-    top: 5px;
-    left: 195px;
+    top: 15px;
+    right: 5px;
 }
 </style>

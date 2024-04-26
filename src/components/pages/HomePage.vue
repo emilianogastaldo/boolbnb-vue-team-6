@@ -32,6 +32,24 @@ export default {
                 console.error(err);
             }
             store.isLoading = false;
+        },
+        async sendform(address) {
+            console.log(address);
+            // attivo il loader
+            store.isLoading = true;
+            try {
+                const res = await axios.get(`${baseUri}?address=${address}`);
+                // destrutturo i dati dalla risposta
+                const { data } = res;
+                // stampo i risultati in console
+                console.log(data);
+                // riassegno la risposta all'array degli appartamenti
+                this.flats = data;
+
+            } catch (err) {
+                // segnalo un eventuale errore
+                console.error(err);
+            }
         }
     },
     created() {
@@ -43,5 +61,5 @@ export default {
 
 <template>
     <BaseGallery :flats="flats" />
-    <SearchForm />
+    <SearchForm @sent-form="sendform" />
 </template>
