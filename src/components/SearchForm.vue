@@ -13,7 +13,7 @@ export default {
 
 
 <template>
-    <form @submit.prevent="$emit('sent-form', form)">
+    <form @submit.prevent="$emit('sent-form', address)">
         <div class="input-box">
             <div>
                 <label for="address">Indirizzo</label>
