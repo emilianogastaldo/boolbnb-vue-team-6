@@ -19,8 +19,7 @@ export default {
         <div class="input-box">
             <div>
                 <label for="address">Indirizzo</label>
-                <input id="address" type="text" v-model.trim="form.address" placeholder="Cerca un appartamento..."
-                    @keyup="">
+                <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..." @keyup="">
             </div>
 
 
