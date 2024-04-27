@@ -18,8 +18,8 @@ export default {
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav text-end">
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8000/login">Accedi</a>
                         </li>
