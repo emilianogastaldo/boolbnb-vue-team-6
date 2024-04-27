@@ -17,7 +17,7 @@ export default {
     <form @submit.prevent="$emit('sent-form', address)">
 
         <div class="input-box">
-            <div>
+            <div class="d-flex flex-column">
                 <label for="address">Indirizzo</label>
                 <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..." @keyup="">
             </div>
@@ -37,7 +37,7 @@ form {
     bottom: 50px;
     right: 50%;
     transform: translateX(50%);
-    background-color: white;
+    background-color: rgb(246, 206, 206);
     border-radius: 30px
 }
 
@@ -66,7 +66,7 @@ button {
     background: none;
     cursor: pointer;
     position: absolute;
-    top: 15px;
+    top: 25px;
     right: 5px;
 }
 </style>
