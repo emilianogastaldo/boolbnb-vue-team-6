@@ -6,9 +6,9 @@ export default {
     data: () => ({
         form: {
             address: '',
-            rooms: '',
-            bathrooms: '',
-            services: ''
+            // rooms: '',
+            // bathrooms: '',
+            // services: ''
         }
     }),
     emits: ['sent-form']
@@ -21,10 +21,9 @@ export default {
         <div class="input-box">
             <div>
                 <label for="address">Indirizzo</label>
-                <input id="address" type="text" v-model.trim="form.address" placeholder="Cerca un appartamento..."
-                    @keyup="">
+                <input id="address" type="text" v-model.trim="form.address" placeholder="Cerca un appartamento...">
             </div>
-            <div>
+            <!-- <div>
                 <label for="rooms">Stanze</label>
                 <input id="rooms" type="number" min="1" step="1" v-model.trim="form.rooms" placeholder="Stanze..."
                     @keyup="">
@@ -37,7 +36,7 @@ export default {
             <div>
                 <label for="services">Servizi</label>
                 <input id="services" type="text" v-model.trim="form.services" placeholder="Servizi..." @keyup="">
-            </div>
+            </div> -->
 
             <button>
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />

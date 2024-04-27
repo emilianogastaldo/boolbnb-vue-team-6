@@ -38,7 +38,8 @@ export default {
             // attivo il loader
             store.isLoading = true;
             try {
-                const res = await axios.get(`${baseUri}?query=${form.address}&${form.rooms}&${form.bathrooms}&${form.services}`);
+                // &${form.rooms}&${form.bathrooms}&${form.services}
+                const res = await axios.get(`${baseUri}?address=${form.address}`);
                 // destrutturo i dati dalla risposta
                 const { data } = res;
                 // stampo i risultati in console
@@ -50,6 +51,7 @@ export default {
                 // segnalo un eventuale errore
                 console.error(err);
             }
+            store.isLoading = false;
         }
     },
     created() {
