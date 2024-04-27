@@ -5,11 +5,8 @@ export default {
 
     props: {
         flat: Object,
+        isDetail: Boolean
     },
-
-    methods: {
-    }
-
 }
 </script>
 
