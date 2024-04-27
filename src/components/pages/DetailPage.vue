@@ -24,6 +24,8 @@ export default {
             } catch (err) {
                 // segnalo un eventuale errore
                 console.error(err);
+                // forzo il reindirizzamento verso la pagina 404
+                this.$router.push({ name: 'not-found' });
             }
             // spengo il loader
             store.isLoading = false;
