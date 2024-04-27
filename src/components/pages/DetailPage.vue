@@ -1,11 +1,13 @@
 <script>
 import BaseCard from '../BaseCard.vue';
 import { store } from '../../data/store.js';
+import axios from 'axios';
 export default {
     name: 'DetailPage',
     components: { BaseCard },
     data: () => ({
         flat: null,
+
         store
     }),
     methods: {
@@ -30,11 +32,14 @@ export default {
             // spengo il loader
             store.isLoading = false;
         }
+    },
+    created() {
+        this.getFlat();
     }
 
 }
 </script>
 
 <template>
-    <BaseCard :word="word" />
+    <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
 </template>
