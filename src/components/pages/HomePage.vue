@@ -33,8 +33,8 @@ export default {
             }
             store.isLoading = false;
         },
-        async sendform(form) {
-            console.log(form);
+        async sendform(address) {
+            console.log(address);
             // attivo il loader
             store.isLoading = true;
             try {

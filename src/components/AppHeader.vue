@@ -6,29 +6,31 @@ export default {
 
 <template>
     <header class="p-2">
-        <nav class="d-flex gap-2 h-100">
-            <h1>BoolBnb</h1>
-            <ul class="list-unstyled">
-                <li>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <h1 class="me-2">BoolBnb</h1>
                     <RouterLink to="">
-                        <font-awesome-icon :icon="'fas fa-house'" />
                         Home
                     </routerlink>
-                </li>
-            </ul>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8000/login">Accedi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8000/register">Registrati</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 </template>
 
-<style lang="scss" scoped>
-header {
-    height: 80px;
-    box-shadow: 0 10px 10px #aec6b0;
-
-    ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-</style>
+<style lang="scss" scoped></style>

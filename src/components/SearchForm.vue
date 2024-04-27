@@ -10,6 +10,7 @@ export default {
             // bathrooms: '',
             // services: ''
         }
+
     }),
     emits: ['sent-form']
 }
@@ -17,7 +18,9 @@ export default {
 
 
 <template>
-    <form @submit.prevent="$emit('sent-form', form)">
+
+    <form @submit.prevent="$emit('sent-form', address)">
+
         <div class="input-box">
             <div>
                 <label for="address">Indirizzo</label>
@@ -37,6 +40,7 @@ export default {
                 <label for="services">Servizi</label>
                 <input id="services" type="text" v-model.trim="form.services" placeholder="Servizi..." @keyup="">
             </div> -->
+
 
             <button>
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
@@ -70,7 +74,7 @@ input {
     padding: 10px 30px 10px 10px;
 
     div {
-        border-right: 1px solid black;
+
         padding-left: 10px;
     }
 }
@@ -81,7 +85,7 @@ button {
     background: none;
     cursor: pointer;
     position: absolute;
-    top: 25px;
+    top: 15px;
     right: 5px;
 }
 </style>

@@ -1,80 +1,24 @@
 <script>
-import { RouterLink } from 'vue-router';
-
+import BaseCard from './BaseCard.vue'
 export default {
     name: 'BaseGallery',
+    components: {
+        BaseCard
+    },
     props: {
         flats: Array,
     },
 
     methods: {
-        createPath(img) {
-            const url = new URL(this.flats['image'], import.meta.url);
-            return url;
-
-        }
-
     }
+
 }
 </script>
 
 <template>
-    <div class="jumbotron my-3">
-        <div class="row">
-            <div class="col" v-for="flat in flats" :key="flat.id">
-                <figure>
-                    <img class="img-fluid" src="" alt="{{ flat.title }}">
-                </figure>
-                <figcaption>
-                    <h5>{{ flat.title }}</h5>
-                    <address>{{ flat.address }}</address>
-                </figcaption>
-                <div class="heart" @click="toggleHeart">
-                    <font-awesome-icon :icon="'fas fa-heart'" />
-                </div>
-            </div>
-        </div>
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2">
+        <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" class="col" />
     </div>
 </template>
 
-<style lang="scss" scoped>
-/* row */
-.row {
-    flex-wrap: nowrap;
-    overflow: hidden;
-    transition: transform 1s ease-in-out;
-    position: relative;
-
-
-
-    figure {
-        width: 150px;
-        height: 200px;
-        overflow: hidden;
-        cursor: pointer;
-
-        img {
-            transition: scale 0.7s ease;
-
-            &:hover {
-                scale: 1.1;
-            }
-        }
-    }
-}
-
-.col {
-    position: relative;
-
-    .heart {
-        position: absolute;
-        right: 0;
-        top: 0;
-        cursor: pointer;
-
-        .red {
-            color: red;
-        }
-    }
-}
-</style>
+<style lang="scss" scoped></style>
