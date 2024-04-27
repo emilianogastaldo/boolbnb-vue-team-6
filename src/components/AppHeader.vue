@@ -10,7 +10,7 @@ export default {
             <div class="container">
                 <div class="d-flex align-items-center">
                     <h1 class="me-2">BoolBnb</h1>
-                    <RouterLink to="">
+                    <RouterLink to="/">
                         Home
                     </routerlink>
                 </div>
