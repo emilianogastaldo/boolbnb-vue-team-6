@@ -4,12 +4,7 @@ const baseUri = 'http://localhost:8000/api/flats/';
 export default {
     name: 'SearchForm',
     data: () => ({
-        form: {
-            address: '',
-            // rooms: '',
-            // bathrooms: '',
-            // services: ''
-        }
+        address: '',
     }),
     emits: ['sent-form']
 }
@@ -17,7 +12,7 @@ export default {
 
 
 <template>
-    <form @submit.prevent="$emit('sent-form', form)">
+    <form @submit.prevent="$emit('sent-form', address)">
         <div class="input-box">
             <div class="d-flex flex-column">
                 <label for="address">Indirizzo</label>
