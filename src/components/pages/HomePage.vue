@@ -50,6 +50,8 @@ export default {
                 // segnalo un eventuale errore
                 console.error(err);
             }
+            store.isLoading = false;
+
         }
     },
     created() {
