@@ -5,12 +5,12 @@ export default {
 </script>
 
 <template>
-    <header class="p-2">
+    <header class=" shadow-sm mb-5">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="d-flex align-items-center">
                     <h1 class="me-2">BoolBnb</h1>
-                    <RouterLink to="/">
+                    <RouterLink to="/" class="home ms-3">
                         Home
                     </routerlink>
                 </div>
@@ -33,4 +33,14 @@ export default {
     </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.home {
+    text-decoration: none;
+    color: black;
+}
+</style>

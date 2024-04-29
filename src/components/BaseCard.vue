@@ -22,21 +22,27 @@ export default {
         </RouterLink>
     </div>
     <div v-if="isDetail">
-        <h1 class="">{{ flat.title }}</h1>
+        <h1 class="text-center">{{ flat.title }}</h1>
         <h6>{{ flat.address }}</h6>
-        <figure class="show-figure">
-            <img :src="flat.image" :alt="flat.title" class="show-img">
-        </figure>
-
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col">
+                    <img :src="flat.image" class="img-fluid rounded-start" :alt="flat.title">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Numero stanze: {{ flat.room }}</h5>
+                        <h5 class="card-title">Numero posti letto: {{ flat.bed }}</h5>
+                        <h5 class="card-title">Numero bagni: {{ flat.bathroom }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
         <p>{{ flat.description }}</p>
-
-        <ul>
-            <li>Numero stanze: {{ flat.room }}</li>
-            <li>Numero posti letto: {{ flat.bed }}</li>
-            <li>Numero bagni: {{ flat.bathroom }}</li>
-        </ul>
-
         <ul class="">
+            <li>
+                <h2>I servizi offerti dall'host</h2>
+            </li>
             <li v-for="service in flat.services" :key="service.id">{{ service.name }}: <font-awesome-icon
                     :icon="service.icon" :style="{ 'color': service.color }" />
             </li>
@@ -45,15 +51,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-// .show-img {
-//     width: 50%;
-// }
-
-// .show-figure {
-//     width: 100vw;
-//     height: 200px;
-// }
-
 ul {
     list-style-type: none;
     padding-left: 0;

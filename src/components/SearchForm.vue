@@ -48,6 +48,7 @@ export default {
         },
         setAddress(completeAddress) {
             this.address = completeAddress;
+            this.adress = '';
 
         }
     },
@@ -77,10 +78,9 @@ export default {
 
 
 <template>
-    <form @submit.prevent="$emit('sent-form', address)">
+    <!-- <form @submit.prevent="$emit('sent-form', address)">
         <div class="input-box">
             <div class="d-flex flex-column">
-                <label for="address">Indirizzo</label>
                 <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..."
                     @keyup="getApiFlats">
                 <ul class="list-group">
@@ -91,49 +91,29 @@ export default {
                     <li class="list-group-item" v-if="message">{{ message }}</li>
                 </ul>
             </div>
-
             <button>
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
             </button>
         </div>
-    </form>
+    </form> -->
+    <nav class="navbar">
+        <div class="container">
+            <form class="d-flex" role="search" @submit.prevent="$emit('sent-form', address)">
+                <input class="form-control me-2" type="search" placeholder="Cerca un appartamento.." aria-label="Search"
+                    v-model.trim="address" @keyup="getApiFlats">
+                <button class="btn btn-outline-dark">
+                    <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
+                </button>
+            </form>
+        </div>
+        <ul class="list-group">
+            <li role="button" @click="setAddress(street.address.freeformAddress)" class="list-group-item"
+                v-for="(street, i) in streetList" :key="i">
+                {{ street.address.freeformAddress }}
+            </li>
+            <li class="list-group-item" v-if="message">{{ message }}</li>
+        </ul>
+    </nav>
 </template>
 
-<style lang="scss" scoped>
-form {
-    /*position: fixed;
-    bottom: 50px;
-    right: 50%;
-    transform: translateX(50%);*/
-    background-color: rgb(246, 206, 206);
-    border-radius: 30px
-}
-
-input {
-    padding: 5px;
-    border: none;
-    border-radius: 15px;
-
-}
-
-.input-box {
-    position: relative;
-    display: flex;
-    flex-basis: 25%;
-    padding: 10px 30px 10px 10px;
-
-    div {
-        padding-left: 10px;
-    }
-}
-
-button {
-    border: none;
-    padding: 0;
-    background: none;
-    cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: 5px;
-}
-</style>
+<style lang="scss" scoped></style>
