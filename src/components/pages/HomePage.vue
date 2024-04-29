@@ -20,10 +20,12 @@ export default {
                 const res = await axios.get(endpoint);
                 // destrutturo i dati dalla risposta
                 const { data } = res;
+                const { flats, services } = data;
+                console.log(flats, services);
                 // stampo i risultati in console
                 // console.log(data);
                 // riassegno la risposta all'array degli appartamenti
-                this.flats = data;
+                this.flats = flats;
             } catch (err) {
                 // segnalo un eventuale errore
                 console.error(err);
@@ -40,6 +42,6 @@ export default {
 </script>
 
 <template>
-    <BaseGallery :flats="flats" />
     <SearchForm @sent-form="fetchFlats" />
+    <BaseGallery :flats="flats" />
 </template>
