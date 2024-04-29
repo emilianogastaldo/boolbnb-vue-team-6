@@ -14,6 +14,7 @@ export default {
         address: '',
         streetList: [],
         message: '',
+
     }),
     methods: {
         getApiFlats() {
@@ -49,6 +50,7 @@ export default {
         setAddress(completeAddress) {
             this.address = completeAddress;
             this.adress = '';
+
 
         }
     },
@@ -107,13 +109,23 @@ export default {
             </form>
         </div>
         <ul class="list-group">
-            <li role="button" @click="setAddress(street.address.freeformAddress)" class="list-group-item"
+            <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
                 v-for="(street, i) in streetList" :key="i">
-                {{ street.address.freeformAddress }}
+                <button>
+                    {{ street.address.freeformAddress }}
+
+                </button>
             </li>
             <li class="list-group-item" v-if="message">{{ message }}</li>
         </ul>
     </nav>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* tolgo lo stile al bottone*/
+li button {
+    border: none;
+    padding: 0;
+    background-color: none;
+}
+</style>
