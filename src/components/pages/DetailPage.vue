@@ -21,6 +21,7 @@ export default {
                 const { data } = res;
                 // stampo i data in pagina
                 console.log(data);
+                console.log(data['services']);
                 // riassegno i data all'oggetto vuoto
                 this.flat = data;
             } catch (err) {
