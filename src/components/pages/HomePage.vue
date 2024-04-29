@@ -40,6 +40,6 @@ export default {
 </script>
 
 <template>
-    <BaseGallery :flats="flats" />
     <SearchForm @sent-form="fetchFlats" />
+    <BaseGallery :flats="flats" />
 </template>
