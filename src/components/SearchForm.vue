@@ -17,6 +17,7 @@ export default {
     }),
     methods: {
         getApiFlats() {
+            if (this.address == '') return;
             axios.get(`https://api.tomtom.com/search/2/search/${this.address}.json?key=${keyApi}&countrySet=IT&limit=5&lat=${lat}&lon=${lon}&radius=${radius}`)
                 .then(res => {
                     console.log(res.data.results);
