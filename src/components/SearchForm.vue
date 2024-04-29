@@ -13,7 +13,7 @@ export default {
     data: () => ({
         address: '',
         streetList: [],
-
+        message: '',
     }),
     methods: {
         getApiFlats() {
@@ -21,6 +21,8 @@ export default {
                 .then(res => {
                     console.log(res.data.results);
                     this.streetList = res.data.results;
+                    this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
+                    console.log(this.message)
                     // Se non trovo appartamenti stampo un messaggio di avviso
 
                     // Salvo il nome della via solo al click sulla tendina
@@ -42,6 +44,10 @@ export default {
                 .catch(err => {
                     console.error('Si è verificato un errore durante il recupero dei dati dall\'API:', err);
                 })
+        },
+        setAddress(completeAddress) {
+            this.address = completeAddress;
+
         }
     },
     emits: ['sent-form']
@@ -77,8 +83,11 @@ export default {
                 <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..."
                     @keyup="getApiFlats">
                 <ul class="list-group">
-                    <li class="list-group-item" v-for="(street, i) in streetList" :key="i">{{
-                        street.address.freeformAddress }}</li>
+                    <li role="button" @click="setAddress(street.address.freeformAddress)" class="list-group-item"
+                        v-for="(street, i) in streetList" :key="i">
+                        {{ street.address.freeformAddress }}
+                    </li>
+                    <li class="list-group-item" v-if="message">{{ message }}</li>
                 </ul>
             </div>
 
@@ -86,7 +95,6 @@ export default {
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
             </button>
         </div>
-
     </form>
 </template>
 
