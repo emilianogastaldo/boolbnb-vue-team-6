@@ -23,30 +23,32 @@ export default {
     </div>
     <div v-if="isDetail">
         <h1 class="text-center">{{ flat.title }}</h1>
-        <h6>{{ flat.address }}</h6>
-        <div class="card mb-3">
-            <div class="row">
-                <div class="col">
+        <div class="card mb-3 col-12">
+            <div class="row g-0">
+                <div class="col-md-4 p-2">
                     <img :src="flat.image" class="img-fluid rounded-start" :alt="flat.title">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Numero stanze: {{ flat.room }}</h5>
-                        <h5 class="card-title">Numero posti letto: {{ flat.bed }}</h5>
-                        <h5 class="card-title">Numero bagni: {{ flat.bathroom }}</h5>
+                        <h5 class="card-title">{{ flat.address }}</h5>
+                        <p class="card-text">{{ flat.description }}</p>
+                        <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
                     </div>
                 </div>
             </div>
+            <div class="p-2">
+                <h5 class="card-title">Numero di stanze: {{ flat.room }}</h5>
+                <h5 class="card-title">Numero di bagni: {{ flat.bathroom }}</h5>
+                <h2>I servizi offerti dall'host:</h2>
+                <ul class="">
+                    <li v-for="service in flat.services" :key="service.id">{{ service.name }}: <font-awesome-icon
+                            :icon="service.icon" :style="{ 'color': service.color }" />
+                    </li>
+                </ul>
+
+            </div>
         </div>
-        <p>{{ flat.description }}</p>
-        <ul class="">
-            <li>
-                <h2>I servizi offerti dall'host</h2>
-            </li>
-            <li v-for="service in flat.services" :key="service.id">{{ service.name }}: <font-awesome-icon
-                    :icon="service.icon" :style="{ 'color': service.color }" />
-            </li>
-        </ul>
+
     </div>
 </template>
 
@@ -54,5 +56,9 @@ export default {
 ul {
     list-style-type: none;
     padding-left: 0;
+}
+
+.card {
+    border: none;
 }
 </style>
