@@ -9,6 +9,7 @@ export default {
     components: { BaseGallery, SearchForm, AppFilter },
     data: () => ({
         flats: [],
+        services: [],
         store
     }),
     methods: {
@@ -22,11 +23,12 @@ export default {
                 // destrutturo i dati dalla risposta
                 const { data } = res;
                 const { flats, services } = data;
-                console.log(flats, services);
                 // stampo i risultati in console
-                // console.log(data);
+                console.log(flats, services);
                 // riassegno la risposta all'array degli appartamenti
                 this.flats = flats;
+                // riassegno la risposta all'array dei servizi
+                this.services = services;
             } catch (err) {
                 // segnalo un eventuale errore
                 console.error(err);
@@ -44,6 +46,6 @@ export default {
 
 <template>
     <SearchForm @sent-form="fetchFlats" />
-    <AppFilter :flats="flats" />
+    <AppFilter :flats="flats" :services="services" />
     <BaseGallery :flats="flats" />
 </template>
