@@ -1,0 +1,57 @@
+<script>
+export default {
+    name: 'AppFilter',
+    props: {
+        flats: Array
+    },
+    data: () => ({
+        rooms: '',
+        bathrooms: '',
+        services: []
+    }),
+    computed: {
+        filteredServices() {
+            const searchTearm = this.services.toLowerCase();
+            return flats.services.filter(service =>
+                service.name.toLowerCase().includes(searchTearm))
+        }
+    }
+}
+</script>
+
+<template>
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+        aria-controls="staticBackdrop">
+        Ulteriori filtri
+    </button>
+    <div class="offcanvas offcanvas-center col-8" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+        aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="staticBackdropLabel">Filtri</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body text-center">
+            <div>
+                <label class="col-10" for="rooms">Numero di stanze:</label>
+                <input class="col-10" id="rooms" type="number" step="1" v-model.trim="rooms">
+            </div>
+            <div>
+                <label class="col-10" for="bathrooms">Numero di bagni:</label>
+                <input class="col-10" id="bathrooms" type="number" step="1" v-model.trim="bathrooms">
+            </div>
+            <div>
+                <label class="col-10" for="services">Servizi offerti dai proprietari:</label>
+                <input class="col-10" id="services" type="text" v-model.trim="services">
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<style lang="scss" scoped>
+.offcanvas {
+    padding: fixed;
+    bottom: 50%;
+    left: 15%;
+}
+</style>

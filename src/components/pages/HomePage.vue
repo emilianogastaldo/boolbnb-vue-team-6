@@ -1,11 +1,12 @@
 <script>
 import { store } from '../../data/store.js';
+import AppFilter from '../AppFilter.vue'
 import BaseGallery from '../BaseGallery.vue';
 import SearchForm from '../SearchForm.vue';
 import axios from 'axios';
 export default {
     name: 'HomePage',
-    components: { BaseGallery, SearchForm },
+    components: { BaseGallery, SearchForm, AppFilter },
     data: () => ({
         flats: [],
         store
@@ -43,5 +44,6 @@ export default {
 
 <template>
     <SearchForm @sent-form="fetchFlats" />
+    <AppFilter :flats="flats" />
     <BaseGallery :flats="flats" />
 </template>
