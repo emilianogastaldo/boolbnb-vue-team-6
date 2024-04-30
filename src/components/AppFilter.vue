@@ -21,7 +21,7 @@ export default {
         aria-controls="staticBackdrop">
         Ulteriori filtri
     </button>
-    <div class="offcanvas offcanvas-start col-8" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
         aria-labelledby="staticBackdropLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="staticBackdropLabel">Filtri</h5>
