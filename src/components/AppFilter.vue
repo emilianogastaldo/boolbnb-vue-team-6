@@ -5,6 +5,7 @@ export default {
         flats: Array,
         flatServices: Array
     },
+    emits: ['filter'],
     data: () => ({
         rooms: '',
         bathrooms: '',
@@ -13,8 +14,8 @@ export default {
     computed: {
         filteredServices() {
             const searchTearm = this.services.toLowerCase();
-            return this.services.filter(service =>
-                service.name.toLowerCase().includes(searchTearm))
+            return this.flatServices.filter(flatService =>
+                flatService.name.toLowerCase().includes(searchTearm))
         }
     }
 }
@@ -42,7 +43,8 @@ export default {
             </div>
             <div>
                 <label class="col-10" for="services">Servizi offerti dai proprietari:</label>
-                <input class="col-10" id="services" type="text" v-model.trim="services">
+                <input class="col-10" id="services" type="text" v-model.trim="services"
+                    @keyup="$emit('filter', services)">
             </div>
         </div>
     </div>
