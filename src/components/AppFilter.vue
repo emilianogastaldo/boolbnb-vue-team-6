@@ -29,12 +29,12 @@ export default {
         </div>
         <div class="offcanvas-body text-center">
             <div>
-                <label class="col-10" for="rooms">Numero di stanze:</label>
+                <label class="col-10" for="rooms">Numero di stanze</label>
                 <input class="col-10" id="rooms" type="number" step="1" v-model.trim="form.rooms"
                     @change="$emit('send-form', form)">
             </div>
             <div>
-                <label class="col-10" for="bathrooms">Numero di bagni:</label>
+                <label class="col-10" for="bathrooms">Numero di bagni</label>
                 <input class="col-10" id="bathrooms" type="number" step="1" v-model.trim="form.bathrooms"
                     @change="$emit('send-form', form)">
             </div>
