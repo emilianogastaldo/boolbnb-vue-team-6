@@ -35,6 +35,9 @@ export default {
             }
             // Disattivo il loader
             store.isLoading = false;
+        },
+        filterServices(service) {
+            this.services = service;
         }
     },
     created() {
