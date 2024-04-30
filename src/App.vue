@@ -7,13 +7,24 @@ export default {
   components: { AppLoader, AppHeader },
   data: () => ({
     store
-  })
+  }),
+  methods: {
+    async logout(event) {
+      if (confirm('Vuoi davvero uscire?')) {
+        try {
+          axios.get()
+        } catch (err) {
+
+        }
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <AppLoader v-if="store.isLoading" />
-  <AppHeader />
+  <AppHeader @logout="logout" />
   <div class="container">
     <!-- pagine -->
     <RouterView />
