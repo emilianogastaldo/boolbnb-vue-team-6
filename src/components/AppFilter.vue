@@ -25,7 +25,7 @@ export default {
         aria-controls="staticBackdrop">
         Ulteriori filtri
     </button>
-    <div class="offcanvas offcanvas-center col-8" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+    <div class="offcanvas offcanvas-start col-8" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
         aria-labelledby="staticBackdropLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="staticBackdropLabel">Filtri</h5>
@@ -40,20 +40,16 @@ export default {
                 <label class="col-10" for="bathrooms">Numero di bagni:</label>
                 <input class="col-10" id="bathrooms" type="number" step="1" v-model.trim="bathrooms">
             </div>
-            <div>
-                <label class="col-10" for="services">Servizi offerti dai proprietari:</label>
-                <input class="col-10" id="services" type="text" v-model.trim="services"
-                    @keyup="$emit('filter', services)">
+            <div class="mt-3 text-center">
+                <div v-for="(flatService, i) in flatServices" :key="i">
+                    <label class="col-5" for="services">{{ flatService.name }}</label>
+                    <input class="col-5" id="services" type="checkbox" v-model.trim="services"
+                        @keyup="$emit('filter', services)">
+                </div>
             </div>
+
+
         </div>
     </div>
 
 </template>
-
-<style lang="scss" scoped>
-.offcanvas {
-    padding: fixed;
-    bottom: 50%;
-    left: 15%;
-}
-</style>
