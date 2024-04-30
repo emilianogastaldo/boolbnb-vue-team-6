@@ -46,6 +46,6 @@ export default {
 
 <template>
     <SearchForm @sent-form="fetchFlats" />
-    <AppFilter :flats="flats" :services="services" />
+    <AppFilter :flats="flats" :flatServices="services" />
     <BaseGallery :flats="flats" />
 </template>

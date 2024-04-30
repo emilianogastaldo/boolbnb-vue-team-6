@@ -2,7 +2,8 @@
 export default {
     name: 'AppFilter',
     props: {
-        flats: Array
+        flats: Array,
+        flatServices: Array
     },
     data: () => ({
         rooms: '',
@@ -12,7 +13,7 @@ export default {
     computed: {
         filteredServices() {
             const searchTearm = this.services.toLowerCase();
-            return flats.services.filter(service =>
+            return this.services.filter(service =>
                 service.name.toLowerCase().includes(searchTearm))
         }
     }
