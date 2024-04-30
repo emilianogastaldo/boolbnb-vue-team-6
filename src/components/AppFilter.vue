@@ -1,22 +1,18 @@
 <script>
+
 export default {
     name: 'AppFilter',
     props: {
         flats: Array,
         flatServices: Array
     },
-    emits: ['filter'],
     data: () => ({
-        rooms: '',
-        bathrooms: '',
-    }),
-    computed: {
-        filteredServices() {
-            const searchTearm = this.services.toLowerCase();
-            return this.flatServices.filter(flatService =>
-                flatService.name.toLowerCase().includes(searchTearm))
+        form: {
+            rooms: '',
+            bathrooms: '',
         }
-    }
+    }),
+    emits: ['send-form'],
 }
 </script>
 
@@ -34,17 +30,18 @@ export default {
         <div class="offcanvas-body text-center">
             <div>
                 <label class="col-10" for="rooms">Numero di stanze:</label>
-                <input class="col-10" id="rooms" type="number" step="1" v-model.trim="rooms">
+                <input class="col-10" id="rooms" type="number" step="1" v-model.trim="form.rooms"
+                    @change="$emit('send-form', form)">
             </div>
             <div>
                 <label class="col-10" for="bathrooms">Numero di bagni:</label>
-                <input class="col-10" id="bathrooms" type="number" step="1" v-model.trim="bathrooms">
+                <input class="col-10" id="bathrooms" type="number" step="1" v-model.trim="form.bathrooms"
+                    @change="$emit('send-form', form)">
             </div>
             <div class="mt-3 text-center">
                 <div v-for="(flatService, i) in flatServices" :key="i">
                     <label class="col-5" for="services">{{ flatService.name }}</label>
-                    <input class="col-5" id="services" type="checkbox" v-model.trim="services"
-                        @keyup="$emit('filter', services)">
+                    <input class="col-5" id="services" type="checkbox">
                 </div>
             </div>
 

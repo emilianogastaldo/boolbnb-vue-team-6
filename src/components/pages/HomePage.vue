@@ -10,6 +10,8 @@ export default {
     data: () => ({
         flats: [],
         services: [],
+        rooms: '',
+        bathrooms: '',
         store
     }),
     methods: {
@@ -36,8 +38,31 @@ export default {
             // Disattivo il loader
             store.isLoading = false;
         },
-        filterServices(service) {
-            this.services = service;
+        setFilters(form) {
+            this.rooms = form.rooms;
+            this.bathrooms = form.bathrooms;
+        },
+    },
+    computed: {
+        filteredFlats() {
+            let newFlats = this.flats.filter(flat => {
+                if (this.rooms == 0) {
+                    return this.flats;
+                }
+                else {
+                    return flat.room >= this.rooms;
+                }
+            })
+
+            newFlats = newFlats.filter(flat => {
+                if (this.bathrooms == 0) {
+                    return newFlats;
+                }
+                else {
+                    return flat.bathroom >= this.bathrooms;
+                }
+            })
+            return newFlats;
         }
     },
     created() {
@@ -49,6 +74,6 @@ export default {
 
 <template>
     <SearchForm @sent-form="fetchFlats" />
-    <AppFilter :flats="flats" :flatServices="services" />
-    <BaseGallery :flats="flats" />
+    <AppFilter :flats="flats" :flatServices="services" @send-form="setFilters" />
+    <BaseGallery :flats="filteredFlats" />
 </template>
