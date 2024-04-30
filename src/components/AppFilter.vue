@@ -9,7 +9,6 @@ export default {
     data: () => ({
         rooms: '',
         bathrooms: '',
-        services: []
     }),
     computed: {
         filteredServices() {
