@@ -10,8 +10,9 @@ export default {
     data: () => ({
         flats: [],
         services: [],
-        rooms: '',
-        bathrooms: '',
+        filterRooms: '',
+        filterBathrooms: '',
+        filterServices: [],
         store
     }),
     methods: {
@@ -26,7 +27,7 @@ export default {
                 const { data } = res;
                 const { flats, services } = data;
                 // stampo i risultati in console
-                console.log(flats, services);
+                // console.log(flats, services);
                 // riassegno la risposta all'array degli appartamenti
                 this.flats = flats;
                 // riassegno la risposta all'array dei servizi
@@ -39,29 +40,57 @@ export default {
             store.isLoading = false;
         },
         setFilters(form) {
-            this.rooms = form.rooms;
-            this.bathrooms = form.bathrooms;
+            this.filterRooms = form.rooms;
+            this.filterBathrooms = form.bathrooms;
+            this.filterServices = form.services;
         },
     },
     computed: {
         filteredFlats() {
             let newFlats = this.flats.filter(flat => {
-                if (this.rooms == 0) {
+                if (this.filterRooms == 0) {
                     return this.flats;
                 }
                 else {
-                    return flat.room >= this.rooms;
+                    return flat.room >= this.filterRooms;
                 }
             })
 
             newFlats = newFlats.filter(flat => {
-                if (this.bathrooms == 0) {
+                if (this.filterBathrooms == 0) {
                     return newFlats;
                 }
                 else {
-                    return flat.bathroom >= this.bathrooms;
+                    return flat.bathroom >= this.filterBathrooms;
                 }
             })
+
+            // newFlats = newFlats.filter(flat => {
+            //     if (this.filterServices.length === 0) {
+            //         return newFlats;
+            //     }
+            //     else {
+            //         let flag = true;
+            //         flat.services.forEach(service => {
+            //             if (!this.filterServices.includes(service.id)) {
+            //                 flag = false;
+            //                 return flag;
+            //             }
+            //         })
+            //         return flag;
+
+            //     }
+            // })
+            newFlats = newFlats.filter(flat => {
+                if (this.filterServices.length === 0) {
+                    return true; // Includi tutti gli appartamenti se nessun servizio è selezionato
+                } else {
+                    // Controlla se uno dei servizi nell'flat corrisponde ai servizi selezionati
+                    // return flat.services.some(service => this.filterServices.includes(service.id));
+                    // Controlla se l'appartamento ha esattamente tutti i servizi selezionati
+                    return this.filterServices.every(filterService => flat.services.some(service => service.id === filterService));
+                }
+            });
             return newFlats;
         }
     },
