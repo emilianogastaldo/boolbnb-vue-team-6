@@ -1,6 +1,7 @@
 <script>
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    emits: [logout]
 }
 </script>
 
@@ -26,6 +27,10 @@ export default {
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8000/register">Registrati</a>
                         </li>
+                        <li class="nav-item" v-if="islogged">
+                            <a class="nav-link" id="logout-link" href="#" @click.prevent="$emit(logout)">Registrati</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
