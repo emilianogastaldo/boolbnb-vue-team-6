@@ -3,20 +3,28 @@ import BaseCard from '../BaseCard.vue';
 import { store } from '../../data/store.js';
 const endpoint = 'http://127.0.0.1:8000/api/contact-mail/';
 import axios from 'axios';
+const defaultForm = {
+    first_name: '',
+    last_name: '',
+    email_sender: '',
+    text: '',
+    flat_id: '',
+};
 export default {
     name: 'DetailPage',
     components: { BaseCard },
     data: () => ({
         flat: null,
         form: {
-            flat_id: '',
             first_name: '',
             last_name: '',
             email_sender: '',
             text: '',
+            flat_id: '',
         },
         store,
-        isError: false
+        isError: false,
+        isSent: false
     }),
     methods: {
         async getFlat() {
@@ -42,19 +50,19 @@ export default {
             this.form.flat_id = this.flat.id
             axios.post(endpoint, this.form)
                 .then(res => {
-                    console.log(res)
-                    this.isError = false
+                    this.isError = false;
+                    this.isSent = true;
+                    this.form = defaultForm;
                 })
                 .catch(err => {
-                    console.error(err)
-                    this.isError = true
+                    this.isError = true;
                 })
-                .then(() => {
-                    // this.isError = false
-                });
         },
         closeError() {
             this.isError = false;
+        },
+        closeSent() {
+            this.isSent = false;
         }
     },
     created() {
@@ -67,10 +75,13 @@ export default {
 <template>
     <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
     <h2>Contattaci per maggiori info</h2>
+    <div v-if="isError">
+        <h2>ERRORE<button @click="closeError">X</button></h2>
+    </div>
+    <div v-if="isSent">
+        <h2>Mail Inviata<button @click="closeSent">X</button></h2>
+    </div>
     <form @submit.prevent="sendEmail" class="w-50 mb-5">
-        <div v-if="isError">
-            <h2>ERRORE<button @click="closeError">X</button></h2>
-        </div>
         <div class="row g-2">
             <!-- Nome -->
             <div class="col-6">
