@@ -1,7 +1,6 @@
 <script>
 import BaseCard from '../BaseCard.vue';
 import { store } from '../../data/store.js';
-const endpoint = 'http://127.0.0.1:8000/api/contact-mail/';
 import axios from 'axios';
 const defaultForm = {
     first_name: '',
@@ -48,11 +47,11 @@ export default {
         },
         sendEmail() {
             this.form.flat_id = this.flat.id
-            axios.post(endpoint, this.form)
+            axios.post(store.endpointMail, this.form)
                 .then(res => {
                     this.isError = false;
                     this.isSent = true;
-                    this.form = defaultForm;
+                    this.form = { defaultForm };
                 })
                 .catch(err => {
                     this.isError = true;
@@ -87,23 +86,24 @@ export default {
             <div class="col-6">
                 <label for="first_name" class="form-label">Nome <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="first_name" placeholder="es: Mario"
-                    v-model="form.first_name">
+                    v-model="form.first_name" required>
             </div>
             <!-- Cognome -->
             <div class="col-6">
                 <label for="last_name" class="form-label">Cognome <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="last_name" placeholder="es: Rossi" v-model="form.last_name">
+                <input type="text" class="form-control" id="last_name" placeholder="es: Rossi" v-model="form.last_name"
+                    required>
             </div>
             <!-- Email -->
             <div class="col">
                 <label for="email_sender" class="form-label">Indirizzo email <span class="text-danger">*</span></label>
                 <input type="email" class="form-control" id="email_sender" placeholder="es: mario.rossi@gmail.com"
-                    v-model="form.email_sender">
+                    v-model="form.email_sender" required>
             </div>
             <!-- Messaggio -->
             <div class="col-12">
                 <label for="text" class="form-label">Scrivi il tuo messaggio <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="text" rows="10" v-model="form.text"></textarea>
+                <textarea class="form-control" id="text" rows="10" v-model="form.text" required></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-2">Invia</button>
