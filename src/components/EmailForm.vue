@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <h2>Contattaci per maggiori info</h2>
+    <h2>Contatta direttamente l'host per ricevere ulteriori informazioni</h2>
     <div v-if="isError">
         <h2>ERRORE<button @click="$emit('closeError')">X</button></h2>
     </div>

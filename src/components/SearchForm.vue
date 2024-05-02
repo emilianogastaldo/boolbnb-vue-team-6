@@ -24,25 +24,7 @@ export default {
                     console.log(res.data.results);
                     this.streetList = res.data.results;
                     this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
-
                     console.log(this.message)
-                    // Se non trovo appartamenti stampo un messaggio di avviso
-
-                    // Salvo il nome della via solo al click sulla tendina
-                    // const addresses = document.querySelectorAll('li');
-                    // for (const address of addresses) {
-                    //     address.addEventListener('click', () => {
-                    //         //  Se preme il messaggio di avviso, svuoto l'input
-                    //         if (address.innerText === 'Non ci sono appartamenti') {
-                    //             inputAddress.value = '';
-                    //             flatsList.classList.add('d-none');
-                    //         } else {
-                    //             inputAddress.value = address.innerText;
-                    //             formAddress.value = address.innerText;
-                    //             flatsList.classList.add('d-none');
-                    //         }
-                    //     })
-                    // }
                 })
                 .catch(err => {
                     console.error('Si è verificato un errore durante il recupero dei dati dall\'API:', err);
@@ -50,63 +32,20 @@ export default {
         },
         setAddress(completeAddress) {
             this.address = completeAddress;
-            //  1 da sistemare lo svuotamento dopo il keyup del bottone che fa partire la chiamata
-            // 2 da sitemare che se clicco il bottone a vuoto non si azzera la ricerca
-            // 3 da sitemare che se clicco la X non spariscono i dati cercati nell'input
-
-
         }
     },
     emits: ['sent-form']
 }
-
-
-// // Recupero gli elementi dal form
-// const flatsList = document.getElementById("flats-list");
-// const inputAddress = document.getElementById("input-address");
-// const formAddress = document.getElementById("form-address");
-
-// // Evento per far apparire la tendina
-// inputAddress.addEventListener('input', () => {
-//     formAddress.value = null;
-//     flatsList.classList.remove('d-none');
-//     if (inputAddress.value != '') getApiFlats(inputAddress.value);
-// });
-// // Evento per far sparire la tendina se si preme al di fuori di essa
-// window.addEventListener('click', () => {
-//     flatsList.classList.add('d-none');
-// });
-
-// // Funzione per recuperare gli appartamenti
-// 
 </script>
 
 
 <template>
-    <!-- <form @submit.prevent="$emit('sent-form', address)">
-        <div class="input-box">
-            <div class="d-flex flex-column">
-                <input id="address" type="text" v-model.trim="address" placeholder="Cerca un appartamento..."
-                    @keyup="getApiFlats">
-                <ul class="list-group">
-                    <li role="button" @click="setAddress(street.address.freeformAddress)" class="list-group-item"
-                        v-for="(street, i) in streetList" :key="i">
-                        {{ street.address.freeformAddress }}
-                    </li>
-                    <li class="list-group-item" v-if="message">{{ message }}</li>
-                </ul>
-            </div>
-            <button>
-                <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
-            </button>
-        </div>
-    </form> -->
     <nav class="navbar position-relative">
         <div class="container">
             <form class="d-flex" role="search" @submit.prevent="$emit('sent-form', address)">
                 <input class="form-control me-2" type="search" placeholder="Cerca un appartamento.." aria-label="Search"
                     v-model.trim="address" @keyup="getApiFlats">
-                <button class="btn btn-outline-dark">
+                <button class="btn btn-outline-light">
                     <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
                 </button>
             </form>

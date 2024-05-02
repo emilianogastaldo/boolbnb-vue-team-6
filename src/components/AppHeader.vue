@@ -43,7 +43,7 @@ export default {
             <div class="container">
                 <div class="d-flex align-items-center">
                     <h1 class="me-2">BoolBnb</h1>
-                    <RouterLink to="/" class="home ms-3">
+                    <RouterLink to="/" class="home">
                         Home
                     </routerlink>
                 </div>
@@ -51,8 +51,9 @@ export default {
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <SearchForm @sent-form="fetchFlats" class=" position-absolute autocomplete" />
+
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <SearchForm @sent-form="fetchFlats" class="" />
                     <ul class="navbar-nav text-end">
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8000/login">Accedi</a>
@@ -67,20 +68,29 @@ export default {
     </header>
 </template>
 
+
 <style lang="scss" scoped>
-.autocomplete {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+nav {
+    background-color: #051E34;
+    color: white;
 }
+
 
 a {
     font-weight: 500;
     font-size: 1.5rem;
+    color: white;
+}
+
+a:hover {
+    color: white;
 }
 
 .home {
     text-decoration: none;
-    color: black;
+}
+
+button {
+    background-color: white;
 }
 </style>

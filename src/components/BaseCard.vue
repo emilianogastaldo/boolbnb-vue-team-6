@@ -29,7 +29,7 @@ export default {
         <div class="card mb-3 col-12">
             <div class="row g-0">
                 <div class="col-md-4 p-2">
-                    <img :src="flat.image" class="img-fluid rounded-start" :alt="flat.title">
+                    <img :src="flat.image" class="img-fluid " :alt="flat.title">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
