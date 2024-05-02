@@ -15,13 +15,6 @@ export default {
     components: { BaseCard, EmailForm },
     data: () => ({
         flat: null,
-        form: {
-            first_name: '',
-            last_name: '',
-            email_sender: '',
-            text: '',
-            flat_id: '',
-        },
         store,
         isError: false,
         isSent: false
@@ -74,6 +67,7 @@ export default {
 
 <template>
     <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-    <EmailForm @closeError="closeError" @closeSent="closeSent" @sendEmail="sendEmail" />
+    <EmailForm :isError="isError" :isSent="isSent" @closeError="closeError" @closeSent="closeSent"
+        @sendEmail="sendEmail" />
 
 </template>

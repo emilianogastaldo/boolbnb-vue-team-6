@@ -1,6 +1,19 @@
 <script>
 export default {
     name: 'EmailForm',
+    data: () => ({
+        form: {
+            first_name: '',
+            last_name: '',
+            email_sender: '',
+            text: '',
+            flat_id: '',
+        },
+    }),
+    props: {
+        isError: Boolean,
+        isSent: Boolean
+    },
     emits: ['closeError', 'closeSent', 'sendEmail']
 }
 </script>
