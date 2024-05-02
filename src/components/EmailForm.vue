@@ -1,18 +1,11 @@
 <script>
+
 export default {
     name: 'EmailForm',
-    data: () => ({
-        form: {
-            first_name: '',
-            last_name: '',
-            email_sender: '',
-            text: '',
-            flat_id: '',
-        },
-    }),
     props: {
         isError: Boolean,
-        isSent: Boolean
+        isSent: Boolean,
+        form: Object
     },
     emits: ['closeError', 'closeSent', 'sendEmail']
 }
@@ -26,7 +19,7 @@ export default {
     <div v-if="isSent">
         <h2>Mail Inviata<button @click="$emit('closeSent')">X</button></h2>
     </div>
-    <form @submit.prevent="$emit('sendEmail')" class="w-50 mb-5">
+    <form @submit.prevent="$emit('sendEmail', form), emptyForm" class="w-50 mb-5">
         <div class="row g-2">
             <!-- Nome -->
             <div class="col-6">

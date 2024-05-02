@@ -1,8 +1,11 @@
 <script>
+import FlatMap from './FlatMap.vue';
 
 export default {
     name: 'BaseCard',
-
+    components: {
+        FlatMap
+    },
     props: {
         flat: Object,
         isDetail: Boolean
@@ -48,7 +51,7 @@ export default {
 
             </div>
         </div>
-
+        <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
     </div>
 </template>
 

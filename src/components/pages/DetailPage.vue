@@ -17,7 +17,14 @@ export default {
         flat: null,
         store,
         isError: false,
-        isSent: false
+        isSent: false,
+        form: {
+            first_name: '',
+            last_name: '',
+            email_sender: '',
+            text: '',
+            flat_id: '',
+        },
     }),
     methods: {
         async getFlat() {
@@ -39,9 +46,9 @@ export default {
             // spengo il loader
             store.isLoading = false;
         },
-        sendEmail() {
-            this.form.flat_id = this.flat.id
-            axios.post(store.endpointMail, this.form)
+        sendEmail(form) {
+            form.flat_id = this.flat.id
+            axios.post(store.endpointMail, form)
                 .then(res => {
                     this.isError = false;
                     this.isSent = true;
@@ -67,7 +74,7 @@ export default {
 
 <template>
     <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-    <EmailForm :isError="isError" :isSent="isSent" @closeError="closeError" @closeSent="closeSent"
+    <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError" @closeSent="closeSent"
         @sendEmail="sendEmail" />
 
 </template>
