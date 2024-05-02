@@ -27,7 +27,7 @@ export default {
 <template>
     <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
         aria-controls="staticBackdrop">
-        Ulteriori filtri
+        Clicca <span class="here">QUI</span> per aggiungere ulteriori filtri in base ai servizi offerti dagli Host
     </button>
     <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
         aria-labelledby="staticBackdropLabel">
@@ -64,3 +64,8 @@ export default {
     </div>
 
 </template>
+<style lang="scss" scoped>
+.here {
+    text-decoration: underline 2px blue;
+}
+</style>
