@@ -24,6 +24,7 @@ export default {
                     console.log(res.data.results);
                     this.streetList = res.data.results;
                     this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
+
                     console.log(this.message)
                     // Se non trovo appartamenti stampo un messaggio di avviso
 
@@ -49,7 +50,9 @@ export default {
         },
         setAddress(completeAddress) {
             this.address = completeAddress;
-            this.adress = '';
+            //  1 da sistemare lo svuotamento dopo il keyup del bottone che fa partire la chiamata
+            // 2 da sitemare che se clicco il bottone a vuoto non si azzera la ricerca
+            // 3 da sitemare che se clicco la X non spariscono i dati cercati nell'input
 
 
         }
@@ -98,7 +101,7 @@ export default {
             </button>
         </div>
     </form> -->
-    <nav class="navbar">
+    <nav class="navbar position-relative">
         <div class="container">
             <form class="d-flex" role="search" @submit.prevent="$emit('sent-form', address)">
                 <input class="form-control me-2" type="search" placeholder="Cerca un appartamento.." aria-label="Search"
@@ -108,7 +111,7 @@ export default {
                 </button>
             </form>
         </div>
-        <ul class="list-group">
+        <ul class="list-group position-absolute autocomplete">
             <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
                 v-for="(street, i) in streetList" :key="i">
                 <button>
@@ -122,6 +125,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.autocomplete {
+    top: 90%;
+    left: 3%;
+    z-index: 1;
+}
+
 /* tolgo lo stile al bottone*/
 li button {
     border: none;

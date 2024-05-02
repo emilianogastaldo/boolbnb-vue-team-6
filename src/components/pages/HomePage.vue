@@ -17,6 +17,7 @@ export default {
     }),
     methods: {
         async fetchFlats(address) {
+            console.log(address)
             // Creo l'endpoint in base a se mi arriva un address o meno
             const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
             // attivo il loader
@@ -102,7 +103,7 @@ export default {
 </script>
 
 <template>
-    <SearchForm @sent-form="fetchFlats" />
+    <SearchForm @sent-form="fetchFlats" class="d-none" />
     <AppFilter :flats="flats" :flatServices="services" @send-form="setFilters" />
     <BaseGallery :flats="filteredFlats" />
 </template>

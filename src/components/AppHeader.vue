@@ -1,11 +1,44 @@
 <script>
+import SearchForm from './SearchForm.vue';
+import axios from 'axios';
+import { store } from '../data/store';
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    components: {
+        SearchForm
+    },
+    methods: {
+        async fetchFlats(address) {
+            console.log(address)
+            // Creo l'endpoint in base a se mi arriva un address o meno
+            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
+            // attivo il loader
+            store.isLoading = true;
+            try {
+                const res = await axios.get(endpoint);
+                // destrutturo i dati dalla risposta
+                const { data } = res;
+                const { flats, services } = data;
+                // stampo i risultati in console
+                // console.log(flats, services);
+                // riassegno la risposta all'array degli appartamenti
+                this.flats = flats;
+                // riassegno la risposta all'array dei servizi
+                this.services = services;
+            } catch (err) {
+                // segnalo un eventuale errore
+                console.error(err);
+            }
+            // Disattivo il loader
+            store.isLoading = false;
+        }
+    }
 }
+
 </script>
 
 <template>
-    <header class=" shadow-sm mb-5">
+    <header class=" shadow-sm mb-5 position-relative">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="d-flex align-items-center">
@@ -18,6 +51,7 @@ export default {
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <SearchForm @sent-form="fetchFlats" class=" position-absolute autocomplete" />
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav text-end">
                         <li class="nav-item">
@@ -34,6 +68,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.autocomplete {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 a {
     font-weight: 500;
     font-size: 1.5rem;
