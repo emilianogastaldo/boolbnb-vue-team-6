@@ -74,6 +74,6 @@ export default {
 
 <template>
     <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-    <EmailForm />
+    <EmailForm @closeError="closeError" @closeSent="closeSent" @sendEmail="sendEmail" />
 
 </template>
