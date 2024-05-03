@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-    <header class=" shadow-sm mb-5 position-relative">
+    <header class="position-relative">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="d-flex align-items-center">

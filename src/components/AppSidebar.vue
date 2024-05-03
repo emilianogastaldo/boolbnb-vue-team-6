@@ -26,7 +26,7 @@ export default {
 
 <template>
 
-    <div class="sidebar text-center col-sm-1 col-md-3">
+    <div class="sidebar text-center">
         <h5>Filtri</h5>
 
         <div class="mt-5">
@@ -61,9 +61,17 @@ export default {
 <style lang="scss" scoped>
 /* barra laterale */
 .sidebar {
-    flex-basis: 200px;
+    flex-basis: 250px;
     padding: 5px;
     flex-shrink: 0;
+    background-color: #051E34;
+    color: white;
+
+
+    h5 {
+        border: 1px dashed red;
+
+    }
 
     form {
         width: 100%;
@@ -75,5 +83,7 @@ export default {
 .services {
     height: 200px;
     overflow: auto;
+    width: 100%;
+
 }
 </style>
