@@ -32,6 +32,7 @@ export default {
         },
         setAddress(completeAddress) {
             this.address = completeAddress;
+            this.streetList = [];
         }
     },
     emits: ['sent-form']
