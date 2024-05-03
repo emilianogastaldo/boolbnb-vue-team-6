@@ -13,8 +13,11 @@ export default {
 </script>
 
 <template>
-    <div class="gallery row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
-        <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
+    <div class="container">
+        <div
+            class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
+            <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
+        </div>
     </div>
 </template>
 

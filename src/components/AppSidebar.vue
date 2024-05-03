@@ -26,10 +26,10 @@ export default {
 
 <template>
 
-    <div class="sidebar col-sm-1 col-md-3">
-        <h5 class="offcanvas-title" id="staticBackdropLabel">Filtri</h5>
+    <div class="sidebar text-center col-sm-1 col-md-3">
+        <h5>Filtri</h5>
 
-        <div class="text-center">
+        <div class="mt-5">
             <form @submit.prevent>
                 <!-- <button class="btn btn-warning" type="reset" @click="resetForm">Svuota i campi</button> -->
                 <div class="row">
@@ -44,8 +44,8 @@ export default {
                             v-model.trim="form.bathrooms" @change="$emit('send-form', form)">
                     </div>
                 </div>
-                <div class="mt-3 text-center">
-                    <div class="services" v-for="(flatService, i) in flatServices" :key="i">
+                <div class="mt-3 text-center services mt-5">
+                    <div v-for="(flatService, i) in flatServices" :key="i">
                         <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
                         <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
                             v-model="form.services" @change="$emit('send-form', form)">
@@ -64,6 +64,10 @@ export default {
     flex-basis: 200px;
     padding: 5px;
     flex-shrink: 0;
+
+    form {
+        width: 100%;
+    }
 
 }
 
