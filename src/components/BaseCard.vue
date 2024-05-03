@@ -42,6 +42,7 @@ export default {
             <div class="p-2">
                 <h5 class="card-title">Numero di stanze: {{ flat.room }}</h5>
                 <h5 class="card-title">Numero di bagni: {{ flat.bathroom }}</h5>
+                <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
                 <h2>I servizi offerti dall'host:</h2>
                 <ul class="">
                     <li v-for="service in flat.services" :key="service.id">{{ service.name }}: <font-awesome-icon
@@ -51,7 +52,7 @@ export default {
 
             </div>
         </div>
-        <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
+
     </div>
 </template>
 

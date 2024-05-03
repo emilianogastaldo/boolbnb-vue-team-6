@@ -17,9 +17,11 @@ export default {
         <h2>ERRORE<button @click="$emit('closeError')">X</button></h2>
     </div>
     <div v-if="isSent">
-        <h2>Mail Inviata<button @click="$emit('closeSent')">X</button></h2>
+        <h2 class="d-inline me-3">Mail Inviata</h2><button @click="$emit('closeSent')" type="button" class="btn-close"
+            aria-label="Close"></button>
+
     </div>
-    <form @submit.prevent="$emit('sendEmail', form), emptyForm" class="w-50 mb-5">
+    <form @submit.prevent="$emit('sendEmail', form), emptyForm" class=" mb-5">
         <div class="row g-2">
             <!-- Nome -->
             <div class="col-6">
