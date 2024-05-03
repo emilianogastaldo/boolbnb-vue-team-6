@@ -14,7 +14,7 @@ export default {
         address: '',
         streetList: [],
         message: '',
-
+        isDropdownOpen: false
     }),
     methods: {
         getApiFlats() {
@@ -24,38 +24,60 @@ export default {
                     console.log(res.data.results);
                     this.streetList = res.data.results;
                     this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
-                    console.log(this.message)
+                    console.log(this.message);
+                    this.isDropdownOpen = true;
                 })
                 .catch(err => {
                     console.error('Si è verificato un errore durante il recupero dei dati dall\'API:', err);
-                })
+                });
         },
         setAddress(completeAddress) {
             this.address = completeAddress;
+            this.streetList = [];
+        },
+        closeDropdown() {
+            this.isDropdownOpen = false;
+        },
+        handleDocumentClick(event) {
+            if (!event.target.closest('.autocomplete')) {
+                this.closeDropdown();
+            }
+        },
+        clearSearch() {
+            this.address = '';
+        },
+        onFormSubmit() {
+            this.$emit('sent-form', this.address);
+            this.clearSearch();
         }
     },
-    emits: ['sent-form']
+    emits: ['sent-form'],
+    mounted() {
+        document.addEventListener('click', this.handleDocumentClick);
+    },
+    beforeUnmount() {
+        document.removeEventListener('click', this.handleDocumentClick);
+    }
 }
 </script>
-
 
 <template>
     <nav class="navbar position-relative">
         <div class="container">
-            <form class="d-flex" role="search" @submit.prevent="$emit('sent-form', address)">
+            <form class="d-flex" role="search" @submit.prevent="onFormSubmit">
                 <input class="form-control me-2" type="search" placeholder="Cerca un appartamento.." aria-label="Search"
                     v-model.trim="address" @keyup="getApiFlats">
                 <button class="btn btn-outline-light">
                     <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
+
                 </button>
             </form>
         </div>
-        <ul class="list-group position-absolute autocomplete">
+        <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
             <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
                 v-for="(street, i) in streetList" :key="i">
                 <button>
                     {{ street.address.freeformAddress }}
-
                 </button>
             </li>
             <li class="list-group-item" v-if="message">{{ message }}</li>
