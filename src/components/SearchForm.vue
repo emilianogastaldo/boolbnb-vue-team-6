@@ -111,7 +111,7 @@ export default {
                 </button>
             </form>
         </div>
-        <ul class="list-group position-absolute autocomplete">
+        <!-- <ul class="list-group position-absolute autocomplete">
             <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
                 v-for="(street, i) in streetList" :key="i">
                 <button>
@@ -120,7 +120,7 @@ export default {
                 </button>
             </li>
             <li class="list-group-item" v-if="message">{{ message }}</li>
-        </ul>
+        </ul> -->
     </nav>
 </template>
 
