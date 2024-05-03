@@ -1,7 +1,7 @@
 <script>
 
 export default {
-    name: 'AppFilter',
+    name: 'AppSidebar',
     props: {
         flats: Array,
         flatServices: Array
@@ -25,19 +25,13 @@ export default {
 </script>
 
 <template>
-    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
-        aria-controls="staticBackdrop">
-        Clicca <span class="here">QUI</span> per aggiungere ulteriori filtri in base ai servizi offerti dagli Host
-    </button>
-    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
-        aria-labelledby="staticBackdropLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="staticBackdropLabel">Filtri</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body text-center">
+
+    <div class="sidebar col-sm-1 col-md-3">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Filtri</h5>
+
+        <div class="text-center">
             <form @submit.prevent>
-                <button class="btn btn-warning" type="reset" @click="resetForm">Svuota i campi</button>
+                <!-- <button class="btn btn-warning" type="reset" @click="resetForm">Svuota i campi</button> -->
                 <div class="row">
                     <div class="col">
                         <label class="col-10" for="rooms">Numero di stanze:</label>
@@ -51,7 +45,7 @@ export default {
                     </div>
                 </div>
                 <div class="mt-3 text-center">
-                    <div v-for="(flatService, i) in flatServices" :key="i">
+                    <div class="services" v-for="(flatService, i) in flatServices" :key="i">
                         <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
                         <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
                             v-model="form.services" @change="$emit('send-form', form)">
@@ -65,7 +59,17 @@ export default {
 
 </template>
 <style lang="scss" scoped>
-.here {
-    text-decoration: underline 2px blue;
+/* barra laterale */
+.sidebar {
+    flex-basis: 200px;
+    padding: 5px;
+    flex-shrink: 0;
+
+}
+
+/* creo un contenitore per i servizi */
+.services {
+    height: 200px;
+    overflow: auto;
 }
 </style>

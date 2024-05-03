@@ -1,12 +1,12 @@
 <script>
 import { store } from '../../data/store.js';
-import AppFilter from '../AppFilter.vue'
+import AppSidebar from '../AppSidebar.vue'
 import BaseGallery from '../BaseGallery.vue';
 import SearchForm from '../SearchForm.vue';
 import axios from 'axios';
 export default {
     name: 'HomePage',
-    components: { BaseGallery, SearchForm, AppFilter },
+    components: { BaseGallery, SearchForm, AppSidebar },
     data: () => ({
         flats: [],
         services: [],
@@ -104,6 +104,11 @@ export default {
 
 <template>
     <SearchForm @sent-form="fetchFlats" class="d-none" />
-    <AppFilter :flats="flats" :flatServices="services" @send-form="setFilters" />
-    <BaseGallery :flats="filteredFlats" />
+    <div class="d-flex">
+        <AppSidebar :flats="flats" :flatServices="services" @send-form="setFilters" />
+        <BaseGallery :flats="filteredFlats" />
+
+    </div>
 </template>
+
+<style lang="scss" scoped></style>

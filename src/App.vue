@@ -17,7 +17,7 @@ export default {
   <AppHeader />
   <div class="container" v-show="!store.isLoading">
     <!-- pagine -->
-    <RouterView class="web-app" />
+    <RouterView />
   </div>
 
   <AppFooter />
@@ -25,8 +25,4 @@ export default {
 
 <style lang="scss">
 @use './assets/scss/style.scss';
-
-.web-app {
-  height: calc(100vh - 200px);
-}
 </style>
