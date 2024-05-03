@@ -12,7 +12,7 @@ export default {
                 <div class="col">
                     <ul>
                         <li>LOGO SITO</li>
-                        <li>log fb</li>
+                        <li><font-awesome-icon :icon="'fa-brands fa-square-facebook'" /></li>
                         <li>LOGO YU</li>
                         <li>LOGO IN</li>
                         <li>LOGO X</li>
