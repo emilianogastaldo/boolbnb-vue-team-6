@@ -69,6 +69,7 @@ export default {
                     v-model.trim="address" @keyup="getApiFlats">
                 <button class="btn btn-outline-light">
                     <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
+
                 </button>
             </form>
         </div>
