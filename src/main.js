@@ -31,11 +31,12 @@ import { faComputer } from '@fortawesome/free-solid-svg-icons'
 import { faFileLines } from '@fortawesome/free-regular-svg-icons'
 import { faKitMedical } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-
 import App from './App.vue'
 import AppLoader from './components/AppLoader.vue';
 import router from './assets/router/index.js';
@@ -69,6 +70,8 @@ library.add(faMugSaucer,
     faMagnifyingGlass,
     faHouse,
     faHeart,
+    faChevronRight,
+    faChevronLeft,
     faSquareFacebook,
     faYoutube,
     faXTwitter,
