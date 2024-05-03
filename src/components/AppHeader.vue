@@ -75,6 +75,9 @@ nav {
     color: white;
 }
 
+h1 {
+    color: #FF9900;
+}
 
 a {
     font-weight: 500;
