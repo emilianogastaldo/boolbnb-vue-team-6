@@ -33,6 +33,7 @@ import { faKitMedical } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+// import { faSquareFacebook } from '@fortawesome/free-solid-svg-icons'
 import App from './App.vue'
 import AppLoader from './components/AppLoader.vue';
 import router from './assets/router/index.js';
@@ -67,7 +68,8 @@ library.add(faMugSaucer,
     faHouse,
     faHeart,
     faChevronRight,
-    faChevronLeft
+    faChevronLeft,
+
 );
 createApp(App)
     .component('AppLoader', AppLoader)
