@@ -40,5 +40,8 @@ export default {
 </script>
 
 <template>
-    <BaseCarousel :flats="flats" />
+    <div class="container">
+
+        <BaseCarousel :flats="flats" />
+    </div>
 </template>
