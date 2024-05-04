@@ -14,7 +14,8 @@ export default {
         address: '',
         streetList: [],
         message: '',
-        isDropdownOpen: false
+        isDropdownOpen: false,
+        hasResults: false
     }),
     methods: {
         getApiFlats() {
@@ -26,6 +27,7 @@ export default {
                     this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
                     console.log(this.message);
                     this.isDropdownOpen = true;
+                    this.hasResults = this.streetList.length > 0;
                 })
                 .catch(err => {
                     console.error('Si è verificato un errore durante il recupero dei dati dall\'API:', err);
@@ -75,7 +77,7 @@ export default {
         </div>
         <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
             <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
-                v-for="(street, i) in streetList" :key="i">
+                v-for="(street, i) in streetList" :key="i" :class="{ 'pointer': hasResults }">
                 {{ street.address.freeformAddress }}
             </li>
             <li class="list-group-item" v-if="message">{{ message }}</li>
@@ -95,5 +97,9 @@ li button {
     border: none;
     padding: 0;
     background-color: none;
+}
+
+.pointer {
+    cursor: pointer;
 }
 </style>
