@@ -45,6 +45,7 @@ export default {
                     </div>
                 </div>
                 <div class="mt-3 text-center services mt-5">
+                    <h5>Servizi</h5>
                     <div v-for="(flatService, i) in flatServices" :key="i">
                         <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
                         <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
