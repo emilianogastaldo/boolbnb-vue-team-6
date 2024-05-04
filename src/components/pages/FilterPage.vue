@@ -5,7 +5,7 @@ import BaseGallery from '../BaseGallery.vue';
 import SearchForm from '../SearchForm.vue';
 import axios from 'axios';
 export default {
-    name: 'HomePage',
+    name: 'FilterPage',
     components: { BaseGallery, SearchForm, AppSidebar },
     data: () => ({
         flats: [],

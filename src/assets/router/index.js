@@ -10,6 +10,7 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', component: HomePage, name: 'home' },
+        { path: '/flat', component: FilterPage, name: 'filter' },
         { path: '/flat/:slug', component: DetailPage, name: 'detail' },
         { path: '/not-found', component: NotFoundPage, name: 'not-found' },
         { path: '/:pathMatch(.*)*', redirect: 'not-found' },
