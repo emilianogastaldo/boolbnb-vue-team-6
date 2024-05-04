@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 // importo i componenti che fungono da pagine
 import HomePage from '../../components/pages/HomePage.vue';
+import FilterPage from '../../components/pages/FilterPage.vue';
 import DetailPage from '../../components/pages/DetailPage.vue';
 import NotFoundPage from '../../components/pages/NotFoundPage.vue';
 
