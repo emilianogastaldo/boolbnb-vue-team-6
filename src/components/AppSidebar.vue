@@ -8,6 +8,7 @@ export default {
     },
     data: () => ({
         form: {
+            range: '',
             rooms: '',
             bathrooms: '',
             services: [],
@@ -15,6 +16,7 @@ export default {
     }),
     methods: {
         resetForm() {
+            this.form.range = '';
             this.form.rooms = '';
             this.form.bathrooms = '';
             this.form.services = [];
@@ -32,7 +34,8 @@ export default {
             <form @submit.prevent>
                 <div class="my-3">
                     <label for="range">Raggio di ricerca</label>
-                    <input type="range" id="range">
+                    <input type="range" id="range" min="1" max="20" step="1" value="10" v-model="form.range"
+                        @input="$emit('send-form', form)">
 
                 </div>
                 <!-- <button class="btn btn-warning" type="reset" @click="resetForm">Svuota i campi</button> -->
@@ -48,9 +51,9 @@ export default {
                             v-model.trim="form.bathrooms" @change="$emit('send-form', form)">
                     </div>
                 </div>
-                <div>
+                <div class="mt-3">
                     <h5>Servizi</h5>
-                    <div class="mt-3 text-center services mt-5">
+                    <div class="mt-3 text-center services mt-2">
                         <div v-for="(flatService, i) in flatServices" :key="i">
                             <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
                             <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
@@ -72,22 +75,18 @@ export default {
     flex-basis: 250px;
     padding: 10px;
     flex-shrink: 0;
-    background-color: #051E34;
-    color: white;
-
-
-    h5 {
-        border: 1px dashed red;
-
-    }
+    height: calc(100vh - 80px);
 
     form {
         width: 100%;
     }
-
 }
 
-/* creo un contenitore per i servizi */
+
+
+
+
+
 .services {
     height: 200px;
     overflow: auto;

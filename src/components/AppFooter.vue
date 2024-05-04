@@ -40,7 +40,7 @@ export default {
 footer {
     background-color: #051E34;
     color: white;
-    height: 200px;
+    height: 80px;
 }
 
 ul {

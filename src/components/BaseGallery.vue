@@ -25,6 +25,9 @@ export default {
 /* galleria */
 .gallery {
     flex-grow: 1;
+    border-left: 1px solid #051E34;
+    height: calc(100vh - 80px);
+    overflow: auto;
 
 }
 </style>

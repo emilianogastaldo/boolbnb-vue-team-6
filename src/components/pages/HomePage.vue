@@ -13,6 +13,7 @@ export default {
         filterRooms: '',
         filterBathrooms: '',
         filterServices: [],
+        range: '',
         store
     }),
     methods: {
@@ -41,6 +42,7 @@ export default {
             store.isLoading = false;
         },
         setFilters(form) {
+
             this.filterRooms = form.rooms;
             this.filterBathrooms = form.bathrooms;
             this.filterServices = form.services;
@@ -114,7 +116,6 @@ export default {
 <style lang="scss" scoped>
 div {
     display: flex;
-    height: calc(100% - 280px);
     width: 100%;
 }
 </style>
