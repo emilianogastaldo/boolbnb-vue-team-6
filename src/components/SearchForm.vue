@@ -76,9 +76,7 @@ export default {
         <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
             <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
                 v-for="(street, i) in streetList" :key="i">
-                <button>
-                    {{ street.address.freeformAddress }}
-                </button>
+                {{ street.address.freeformAddress }}
             </li>
             <li class="list-group-item" v-if="message">{{ message }}</li>
         </ul>
