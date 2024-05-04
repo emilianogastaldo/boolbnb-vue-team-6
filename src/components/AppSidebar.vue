@@ -27,10 +27,14 @@ export default {
 <template>
 
     <div class="sidebar text-center">
-        <h5>Filtri</h5>
-
-        <div class="mt-5">
+        <div class="mt-3">
+            <h5>Filtri</h5>
             <form @submit.prevent>
+                <div class="my-3">
+                    <label for="range">Raggio di ricerca</label>
+                    <input type="range" id="range">
+
+                </div>
                 <!-- <button class="btn btn-warning" type="reset" @click="resetForm">Svuota i campi</button> -->
                 <div class="row">
                     <div class="col">
@@ -44,13 +48,16 @@ export default {
                             v-model.trim="form.bathrooms" @change="$emit('send-form', form)">
                     </div>
                 </div>
-                <div class="mt-3 text-center services mt-5">
+                <div>
                     <h5>Servizi</h5>
-                    <div v-for="(flatService, i) in flatServices" :key="i">
-                        <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
-                        <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
-                            v-model="form.services" @change="$emit('send-form', form)">
+                    <div class="mt-3 text-center services mt-5">
+                        <div v-for="(flatService, i) in flatServices" :key="i">
+                            <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
+                            <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
+                                v-model="form.services" @change="$emit('send-form', form)">
+                        </div>
                     </div>
+
                 </div>
             </form>
 
@@ -63,7 +70,7 @@ export default {
 /* barra laterale */
 .sidebar {
     flex-basis: 250px;
-    padding: 5px;
+    padding: 10px;
     flex-shrink: 0;
     background-color: #051E34;
     color: white;
