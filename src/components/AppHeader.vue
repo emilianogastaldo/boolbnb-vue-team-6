@@ -46,7 +46,7 @@ export default {
                     <RouterLink to="/" class="home">
                         Home
                     </routerlink>
-                    <RouterLink :to="{ name: 'filter' }" class="home">
+                    <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
                         Filtri
                     </routerlink>
                 </div>
