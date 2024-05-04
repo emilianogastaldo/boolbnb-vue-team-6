@@ -13,9 +13,21 @@ export default {
 </script>
 
 <template>
-    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
-        <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
+    <div class="container">
+        <div
+            class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
+            <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
+        </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* galleria */
+.gallery {
+    flex-grow: 1;
+    border-left: 1px solid #051E34;
+    height: calc(100vh - 80px);
+    overflow: auto;
+
+}
+</style>

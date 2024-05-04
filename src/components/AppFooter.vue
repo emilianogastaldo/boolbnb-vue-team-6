@@ -6,29 +6,25 @@ export default {
 </script>
 
 <template>
-    <footer class="container-fluid pt-4">
+    <footer class="py-2">
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-md-2 text-center">
                 <div class="col">
-                    <ul>
-                        <li class="h1">BoolBnb</li>
-                        <div class="d-flex gap-3 justify-content-center pointer">
-                            <li><font-awesome-icon :icon="'fa-brands fa-square-facebook'" /></li>
-                            <li><font-awesome-icon :icon="'fa-brands fa-youtube'" /></li>
-                            <li><font-awesome-icon :icon="'fa-brands fa-x-twitter'" /></li>
-                            <li><font-awesome-icon :icon="'fa-brands fa-instagram'" /></li>
-                        </div>
+                    <h2>BoolBnb</h2>
+                    <ul class="d-flex gap-3 justify-content-center pointer">
+                        <li><font-awesome-icon :icon="'fa-brands fa-square-facebook'" /></li>
+                        <li><font-awesome-icon :icon="'fa-brands fa-youtube'" /></li>
+                        <li><font-awesome-icon :icon="'fa-brands fa-x-twitter'" /></li>
+                        <li><font-awesome-icon :icon="'fa-brands fa-instagram'" /></li>
                     </ul>
                 </div>
                 <div class="col">
-                    <ul>
-                        <li class="h5">CHI SIAMO</li>
-                        <div class="d-flex gap-3 justify-content-center pointer">
-                            <li>Claudio</li>
-                            <li>Matteo</li>
-                            <li>Daniele</li>
-                            <li>Emiliano</li>
-                        </div>
+                    <h5>CHI SIAMO</h5>
+                    <ul class="d-flex gap-3 justify-content-center pointer">
+                        <li>Claudio</li>
+                        <li>Matteo</li>
+                        <li>Daniele</li>
+                        <li>Emiliano</li>
                     </ul>
                 </div>
             </div>
@@ -40,7 +36,7 @@ export default {
 footer {
     background-color: #051E34;
     color: white;
-    height: 200px;
+    height: 80px;
 }
 
 ul {

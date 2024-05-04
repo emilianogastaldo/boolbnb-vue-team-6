@@ -38,13 +38,16 @@ export default {
 </script>
 
 <template>
-    <header class=" shadow-sm mb-5 position-relative">
+    <header class="position-relative">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="d-flex align-items-center">
                     <h1 class="me-2">BoolBnb</h1>
                     <RouterLink to="/" class="home">
                         Home
+                    </routerlink>
+                    <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
+                        Filtri
                     </routerlink>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -70,6 +73,10 @@ export default {
 
 
 <style lang="scss" scoped>
+header {
+    height: 80px;
+}
+
 nav {
     background-color: #051E34;
     color: white;
