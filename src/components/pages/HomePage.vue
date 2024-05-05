@@ -45,3 +45,11 @@ export default {
         <BaseCarousel :flats="flats" />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.container {
+    width: 100%;
+    height: calc(100vh - 160px);
+    overflow: auto;
+}
+</style>
