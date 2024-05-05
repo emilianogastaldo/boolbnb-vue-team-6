@@ -75,17 +75,12 @@ export default {
     flex-basis: 250px;
     padding: 10px;
     flex-shrink: 0;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 160px);
 
     form {
         width: 100%;
     }
 }
-
-
-
-
-
 
 .services {
     height: 200px;

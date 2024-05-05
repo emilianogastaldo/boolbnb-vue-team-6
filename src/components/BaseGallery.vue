@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div>
         <div
             class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
             <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
@@ -22,11 +22,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+div {
+    height: calc(100vh - 160px);
+
+}
+
 /* galleria */
 .gallery {
     flex-grow: 1;
     border-left: 1px solid #051E34;
-    height: calc(100vh - 80px);
     overflow: auto;
 
 }

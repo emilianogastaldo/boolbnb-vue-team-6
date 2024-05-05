@@ -106,7 +106,7 @@ export default {
 
 <template>
     <!-- <SearchForm @sent-form="fetchFlats" class="d-none" /> -->
-    <div>
+    <div class="h-100">
         <AppSidebar :flats="flats" :flatServices="services" @send-form="setFilters" />
         <BaseGallery :flats="filteredFlats" />
 
@@ -117,6 +117,6 @@ export default {
 div {
     display: flex;
 
-    height: calc(100vh - 160px);
+
 }
 </style>
