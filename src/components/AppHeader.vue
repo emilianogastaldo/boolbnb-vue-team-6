@@ -45,10 +45,10 @@ export default {
                     <h1 class="me-2">BoolBnb</h1>
                     <RouterLink to="/" class="home">
                         Home
-                    </routerlink>
+                    </RouterLink>
                     <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
                         Filtri
-                    </routerlink>
+                    </RouterLink>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

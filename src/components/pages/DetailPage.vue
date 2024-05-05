@@ -73,8 +73,11 @@ export default {
 </script>
 
 <template>
-    <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-    <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError" @closeSent="closeSent"
-        @sendEmail="sendEmail" />
+    <div class="container">
+        <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
+        <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError" @closeSent="closeSent"
+            @sendEmail="sendEmail" />
+
+    </div>
 
 </template>

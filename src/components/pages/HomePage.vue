@@ -34,11 +34,25 @@ export default {
             // Disattivo il loader
             store.isLoading = false;
         },
+    },
+    created() {
+        this.fetchFlats();
     }
 }
 
 </script>
 
 <template>
-    <BaseCarousel :flats="flats" />
+    <div class="container">
+
+        <BaseCarousel :flats="flats" />
+    </div>
 </template>
+
+<style lang="scss" scoped>
+.container {
+    width: 100%;
+    height: calc(100vh - 160px);
+    overflow: auto;
+}
+</style>
