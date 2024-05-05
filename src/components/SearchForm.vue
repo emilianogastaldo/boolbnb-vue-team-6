@@ -69,13 +69,12 @@ export default {
                     v-model.trim="address" @keyup="getApiFlats">
                 <button class="btn btn-outline-light">
                     <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
-
                 </button>
             </form>
         </div>
         <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
             <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
-                v-for="(street, i) in streetList" :key="i">
+                v-for="(street, i) in streetList" :key="i" :class="{ pointer: street.address }">
                 {{ street.address.freeformAddress }}
             </li>
             <li class="list-group-item" v-if="message">{{ message }}</li>
@@ -95,5 +94,9 @@ li button {
     border: none;
     padding: 0;
     background-color: none;
+}
+
+.pointer {
+    cursor: pointer;
 }
 </style>
