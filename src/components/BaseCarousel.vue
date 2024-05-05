@@ -5,13 +5,22 @@ export default {
         flats: Array,
     },
     data: () => ({
-        currentId: 1
+        currentId: 0,
+        flat: null,
     }),
-    computed: {
+    /* computed: {
         activeId() {
-            return this.currentId === flats['id'];
+
+            return this.currentId === this.flat['id'];
+        }
+    }, */
+    methods: {
+        destructureFlat() {
+            const { flat } = this.flats;
+            return this.flat = flat;
         }
     }
+
 }
 </script>
 
@@ -28,7 +37,9 @@ export default {
             </div>
         </div>
 
+
     </div>
+
 </template>
 
 <style lang="scss" scoped>

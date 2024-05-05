@@ -34,6 +34,9 @@ export default {
             // Disattivo il loader
             store.isLoading = false;
         },
+    },
+    created() {
+        this.fetchFlats();
     }
 }
 
