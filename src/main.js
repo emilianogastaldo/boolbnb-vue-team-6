@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+// import vue3Collapse from "vue3Collapse";
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
@@ -80,5 +81,6 @@ library.add(faMugSaucer,
 createApp(App)
     .component('AppLoader', AppLoader)
     .component('FontAwesomeIcon', FontAwesomeIcon)
+    // .component("vue3-collapse", vue3Collapse)
     .use(router)
     .mount('#app')

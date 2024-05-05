@@ -51,7 +51,7 @@ export default {
                             v-model.trim="form.bathrooms" @change="$emit('send-form', form)">
                     </div>
                 </div>
-                <div class="mt-3">
+                <vue3-collapse v-model="open">
                     <h5>Servizi</h5>
                     <div class="mt-3 text-center services mt-2">
                         <div v-for="(flatService, i) in flatServices" :key="i">
@@ -60,8 +60,8 @@ export default {
                                 v-model="form.services" @change="$emit('send-form', form)">
                         </div>
                     </div>
+                </vue3-collapse>
 
-                </div>
             </form>
 
 
