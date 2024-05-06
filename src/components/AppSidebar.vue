@@ -78,6 +78,7 @@ export default {
     flex-basis: 250px;
     padding: 10px;
     flex-shrink: 0;
+    overflow: hidden;
     // height: calc(100vh - 160px);
 
     form {
