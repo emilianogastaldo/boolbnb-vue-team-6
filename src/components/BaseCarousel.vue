@@ -10,8 +10,12 @@ export default {
     }),
     computed: {
         activeId() {
-            const [flat] = this.flats;
-            return this.currentId = flat['id'];
+            let activeId = null;
+
+            flats.foreach(flat => {
+                activeId = flat.id;
+            })
+            return this.currentId = activeId;
         }
     },
 
