@@ -34,7 +34,8 @@ export default {
 
 <style lang="scss" scoped>
 .map-container {
-    height: 400px;
-    width: 400px;
+    height: 450px;
+    width: auto;
+    max-width: 800px;
 }
 </style>
