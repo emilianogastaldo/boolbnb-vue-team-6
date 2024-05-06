@@ -1,4 +1,5 @@
 <script>
+import { services } from '@tomtom-international/web-sdk-services';
 import { store } from '../../data/store.js';
 import AppSidebar from '../AppSidebar.vue'
 import BaseGallery from '../BaseGallery.vue';
@@ -8,92 +9,96 @@ export default {
     name: 'FilterPage',
     components: { BaseGallery, SearchForm, AppSidebar },
     data: () => ({
-
-        filterRooms: '',
-        filterBathrooms: '',
-        filterServices: [],
+        flats: [],
+        flatServices: [],
+        address: '',
+        room: '',
+        bathroom: '',
+        services: [],
         range: '',
-        store
+        store,
     }),
     methods: {
-        debug() {
-            console.log(store.services, store.flats);
+        async fetchFlats(address) {
+            console.log('sono la pagina dei filtri');
+            const stringServices = JSON.stringify(this.services);
+            // Creo l'endpoint in base a se mi arriva un address o meno
+            // const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}&room=${this.room}&bed=${this.bed}&services=${stringServices}`;
+            // attivo il loader                             ?room=1&bed=1&services=1,2,4,8&distance=1&address=via prova
+            store.isLoading = true;
+            try {
+                const res = await axios.get(store.baseUri, {
+                    params: {
+                        address,
+                        room: this.room,
+                        bed: this.bed,
+                        services: stringServices
+                    }
+                });
+                // destrutturo i dati dalla risposta
+                const { data } = res;
+                const { flats, services } = data;
+                // stampo i risultati in console
+                // riassegno la risposta all'array degli appartamenti
+                this.flats = flats;
+                // riassegno la risposta all'array dei servizi
+                this.flatServices = services;
+            } catch (err) {
+                // segnalo un eventuale errore
+                console.error(err);
+            }
+            // Disattivo il loader
+            store.isLoading = false;
         },
-        setFilters(form) {
-
-            this.filterRooms = form.rooms;
-            this.filterBathrooms = form.bathrooms;
-            this.filterServices = form.services;
-        },
-    },
-    computed: {
-        filteredFlats() {
-            let newFlats = store.flats.filter(flat => {
-                if (this.filterRooms == 0) {
-                    return store.flats;
-                }
-                else {
-                    return flat.room >= this.filterRooms;
-                }
-            })
-
-            newFlats = newFlats.filter(flat => {
-                if (this.filterBathrooms == 0) {
-                    return newFlats;
-                }
-                else {
-                    return flat.bathroom >= this.filterBathrooms;
-                }
-            })
-
-            // newFlats = newFlats.filter(flat => {
-            //     if (this.filterServices.length === 0) {
-            //         return newFlats;
-            //     }
-            //     else {
-            //         let flag = true;
-            //         flat.services.forEach(service => {
-            //             if (!this.filterServices.includes(service.id)) {
-            //                 flag = false;
-            //                 return flag;
-            //             }
-            //         })
-            //         return flag;
-
-            //     }
-            // })
-            newFlats = newFlats.filter(flat => {
-                if (this.filterServices.length === 0) {
-                    return true; // Includi tutti gli appartamenti se nessun servizio è selezionato
-                } else {
-                    // Controlla se uno dei servizi nell'flat corrisponde ai servizi selezionati
-                    // return flat.services.some(service => this.filterServices.includes(service.id));
-                    // Controlla se l'appartamento ha esattamente tutti i servizi selezionati
-                    return this.filterServices.every(filterService => flat.services.some(service => service.id === filterService));
-                }
-            });
-            return newFlats;
-        }
     },
     created() {
-        this.debug();
+        this.fetchFlats(this.address);
     }
 }
 </script>
 
 <template>
-
-    <div>
-        <AppSidebar :flats="store.flats" :flatServices="store.services" @send-form="setFilters" />
-        <BaseGallery :flats="filteredFlats" />
-
+    <div class="container">
+        {{ store.address }}
+        <SearchForm @send="fetchFlats" class="mx-auto" />
+        <div class="mt-2">
+            <h5>Filtri</h5>
+            <form @submit.prevent="fetchFlats(address)">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="range">Raggio di ricerca {{ range }} km</label>
+                        <input type="range" class="form-range" id="range" min="1" max="20" step="1" v-model="range">
+                    </div>
+                    <div class="col">
+                        <label for="rooms">Numero di stanze:</label>
+                        <input id="rooms" type="number" min="0" step="1" v-model="room">
+                    </div>
+                    <div class="col">
+                        <label for="bathrooms">Numero di bagni:</label>
+                        <input id="bathrooms" type="number" min="0" step="1" v-model="bathroom">
+                    </div>
+                </div>
+                <h5 class="mt-3">Servizi</h5>
+                <div class="mt-3">
+                    <div class="row row-cols-6">
+                        <div class="col" v-for="(flatService, i) in flatServices" :key="i">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" :for="flatService.id">{{ flatService.name }}
+                                </label>
+                                <input class="form-check-input" :id="flatService.id" type="checkbox"
+                                    :value="flatService.id" v-model="services">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-primary">Cerca</button>
+            </form>
+        </div>
     </div>
+
+    <!-- <AppSidebar :flats="store.flats" :flatServices="store.services" @send-form="" /> -->
+    <BaseGallery :flats="flats" />
+
 </template>
 
-<style lang="scss" scoped>
-div {
-    display: flex;
-    flex-grow: 1;
-    overflow: auto;
-}
-</style>
+<style lang="scss" scoped></style>

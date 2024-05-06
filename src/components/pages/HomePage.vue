@@ -6,27 +6,26 @@ export default {
     name: 'HomePage',
     components: { BaseCarousel },
     data: () => ({
-        // flats: [],
+        flats: [],
         store
     }),
     methods: {
         async fetchFlats(address) {
+            console.log('sono la pagina Home');
             // Creo l'endpoint in base a se mi arriva un address o meno
-            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${store.address}`;
+            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
             // attivo il loader
             store.isLoading = true;
             try {
-                const res = await axios.get(endpoint);
+                const res = await axios.get(store.baseUri);
                 // destrutturo i dati dalla risposta
                 const { data } = res;
                 const { flats, services } = data;
                 // stampo i risultati in console
-                // console.log(flats, services);
                 // riassegno la risposta all'array degli appartamenti
-                store.flats = flats;
+                this.flats = flats;
                 // riassegno la risposta all'array dei servizi
                 store.services = services;
-                console.log(store.services, store.flats);
             } catch (err) {
                 // segnalo un eventuale errore
                 console.error(err);
@@ -36,7 +35,7 @@ export default {
         },
     },
     created() {
-        this.fetchFlats();
+        this.fetchFlats(store.address);
     }
 }
 
@@ -44,8 +43,7 @@ export default {
 
 <template>
     <div class="container">
-
-        <BaseCarousel :flats="store.flats" />
+        <BaseCarousel :flats="flats" />
     </div>
 </template>
 
