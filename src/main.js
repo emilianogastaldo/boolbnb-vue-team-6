@@ -30,6 +30,8 @@ import { faMosquitoNet } from '@fortawesome/free-solid-svg-icons'
 import { faFan } from '@fortawesome/free-solid-svg-icons'
 import { faComputer } from '@fortawesome/free-solid-svg-icons'
 import { faFileLines } from '@fortawesome/free-regular-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faKitMedical } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
@@ -79,8 +81,13 @@ library.add(faMugSaucer,
     faYoutube,
     faXTwitter,
     faInstagram,
+
+    faArrowLeft,
+    faArrowRight
+
     faUser,
     faRightToBracket
+
 );
 createApp(App)
     .component('AppLoader', AppLoader)
