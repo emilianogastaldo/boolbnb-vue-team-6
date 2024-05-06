@@ -25,12 +25,12 @@ export default {
         </RouterLink>
     </div>
     <div v-if="isDetail">
-        <div class="row row-cols-1 row-cols-md-2 row-lg-md-2">
+        <div class="row">
             <!-- Immagine -->
-            <div class="col col-md-6 col-lg-6 img-container text-center mt-3">
+            <div class="col-12 col-md-6 col-lg-6 img-container text-center mt-3">
                 <img :src="flat.image" class="image-fluid rounded flat-img" :alt="flat.title">
             </div>
-            <div class="col col-md-6 col-lg-6  mt-2">
+            <div class="col-12 col-md-6 col-lg-6 mt-2">
                 <!-- Titolo -->
                 <h3>{{ flat.title }}</h3>
                 <!-- Indirizzo -->
@@ -43,8 +43,8 @@ export default {
                 <p>Numero di bagni: {{ flat.bathroom }}</p>
                 <!-- Servizi -->
                 <h5 class="text-center">Servizi presenti nell'appartamento</h5>
-                <div class="row row-cols-1 row-cols-md-2 row-lg-md-2 text-center">
-                    <div class="col col-md-6 col-lg-6" v-for="service in flat.services" :key="service.id">
+                <div class="row text-center">
+                    <div class="col-12 col-md-6 col-lg-6" v-for="service in flat.services" :key="service.id">
                         <span class="badge text-bg-dark same-w">{{ service.name }}: <font-awesome-icon
                                 :icon="service.icon" /></span>
                     </div>
