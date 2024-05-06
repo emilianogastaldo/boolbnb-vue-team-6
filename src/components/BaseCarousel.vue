@@ -49,6 +49,7 @@ export default {
     height: 100%;
     border: 1px solid black;
     position: relative;
+    border-radius: 20px;
 
     .figure {
         position: relative;
