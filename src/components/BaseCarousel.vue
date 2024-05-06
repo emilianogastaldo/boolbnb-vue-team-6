@@ -5,15 +5,15 @@ export default {
         flats: Array,
     },
     data: () => ({
-        currentId: 0,
+        currentId: 1,
         flat: null,
     }),
-    /* computed: {
+    computed: {
         activeId() {
 
-            return this.currentId === this.flat['id'];
+            return this.currentId === this.flats['id'];
         }
-    }, */
+    },
     methods: {
         destructureFlat() {
             const { flat } = this.flats;
@@ -28,7 +28,7 @@ export default {
     <div id="carousel" class="carousel slide text-center" data-ride="carousel">
 
         <div v-for="flat in flats" :key="flat.id" class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item" :class="{ 'active': activeId }">
                 <img class="d-block img-fluid" :src="flat.image" :alt="flat.title">
             </div>
             <div class="carousel-caption d-none d-md-block">

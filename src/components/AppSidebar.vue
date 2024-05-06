@@ -29,7 +29,7 @@ export default {
 <template>
 
     <div class="sidebar text-center">
-        <div class="mt-3">
+        <div class="mt-2">
             <h5>Filtri</h5>
             <form @submit.prevent>
                 <div class="my-3">

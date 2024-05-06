@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
+    address: '',
     isLoading: false,
     baseUri: 'http://localhost:8000/api/flats/',
     endpointMail: 'http://localhost:8000/api/contact-mail/',
