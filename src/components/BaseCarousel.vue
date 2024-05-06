@@ -27,14 +27,14 @@ export default {
     <div id="carousel" class="carousel slide text-center">
         <button @click="goToThePrev"></button>
         <div v-for="flat in flats" :key="flat.id" class="carousel-inner">
-            <div class="carousel-item" :class="{ 'active': flat.id === currentId }">
+            <figure class="carousel-item" :class="{ 'active': flat.id === currentId }">
                 <img class="d-block img-fluid" :src="flat.image" :alt="flat.title">
-                <h5>{{ flat.title }}</h5>
-                <p>{{ flat.address }}</p>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
+                <figcaption>
+                    <h5>{{ flat.title }}</h5>
+                    <p>{{ flat.address }}</p>
+                </figcaption>
+            </figure>
 
-            </div>
         </div>
         <button @click="goToTheNext"></button>
 
@@ -47,6 +47,7 @@ export default {
 #carousel {
     width: 100%;
     height: 100%;
+    border: 1px solid black;
 }
 
 button {
