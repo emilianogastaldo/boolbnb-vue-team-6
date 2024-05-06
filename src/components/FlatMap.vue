@@ -32,8 +32,10 @@ export default {
     <div id='map' class='map-container'></div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .map-container {
-    height: 500px;
+    height: 450px;
+    width: auto;
+    max-width: 800px;
 }
 </style>

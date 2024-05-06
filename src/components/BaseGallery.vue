@@ -22,10 +22,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-div {
-    // height: calc(100vh - 160px);
+// div {
+//     // height: calc(100vh - 160px);
 
-}
+// }
 
 /* galleria */
 .gallery {

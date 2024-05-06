@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-    <div class="col">
+    <div>
         <RouterLink :to="{ name: 'detail', params: { slug: flat.slug } }" class="card p-2 text-decoration-none"
             v-if="!isDetail">
             <img :src="flat.image" class="card-img-top">
@@ -25,48 +25,65 @@ export default {
         </RouterLink>
     </div>
     <div v-if="isDetail">
-        <h1 class="text-center">{{ flat.title }}</h1>
-        <div class="card mb-3 col-12">
-            <div class="row g-0">
-                <div class="col-md-4 p-2">
-                    <img :src="flat.image" class="img-fluid " :alt="flat.title">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ flat.address }}</h5>
-                        <p class="card-text">{{ flat.description }}</p>
-                        <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+        <div class="row">
+            <!-- Immagine -->
+            <div class="col-12 col-md-6 col-lg-6 img-container text-center mt-3">
+                <img :src="flat.image" class="image-fluid rounded flat-img" :alt="flat.title">
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 mt-2">
+                <!-- Titolo -->
+                <h3>{{ flat.title }}</h3>
+                <!-- Indirizzo -->
+                <h5>{{ flat.address }}</h5>
+                <!-- Descrizione -->
+                <p>{{ flat.description }}</p>
+                <!-- Stanze e bagni -->
+                <h5>Informazioni sull'appartamento</h5>
+                <p class="mb-0">Numero di stanze: {{ flat.room }}</p>
+                <p>Numero di bagni: {{ flat.bathroom }}</p>
+                <!-- Servizi -->
+                <h5 class="text-center">Servizi presenti nell'appartamento</h5>
+                <div class="row text-center">
+                    <div class="col-12 col-md-6 col-lg-6" v-for="service in flat.services" :key="service.id">
+                        <span class="badge text-bg-dark same-w">{{ service.name }}: <font-awesome-icon
+                                :icon="service.icon" /></span>
                     </div>
                 </div>
             </div>
-            <div class="p-2">
-                <h5 class="card-title">Numero di stanze: {{ flat.room }}</h5>
-                <h5 class="card-title">Numero di bagni: {{ flat.bathroom }}</h5>
-                <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
-                <h2>I servizi offerti dall'host:</h2>
-                <ul class="">
-                    <li v-for="service in flat.services" :key="service.id">{{ service.name }}: <font-awesome-icon
-                            :icon="service.icon" :style="{ 'color': service.color }" />
-                    </li>
-                </ul>
-
-            </div>
         </div>
-
     </div>
 </template>
 
 <style scoped lang="scss">
-ul {
-    list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
-}
 
 .card {
     border: none;
+}
+
+.flat-img {
+    max-width: 750px;
+}
+
+.same-w {
+    width: 180px;
+}
+
+.services {
+    width: 400px;
+}
+
+.desc {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.more-infos {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.image-fluid {
+    width: 100%;
+    height: auto;
 }
 </style>

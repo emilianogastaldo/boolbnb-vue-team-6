@@ -2,6 +2,7 @@
 import BaseCard from '../BaseCard.vue';
 import EmailForm from '../EmailForm.vue';
 import { store } from '../../data/store.js';
+import FlatMap from '../FlatMap.vue';
 import axios from 'axios';
 const defaultForm = {
     first_name: '',
@@ -12,9 +13,9 @@ const defaultForm = {
 };
 export default {
     name: 'DetailPage',
-    components: { BaseCard, EmailForm },
+    components: { BaseCard, EmailForm, FlatMap },
     data: () => ({
-        flat: null,
+        flat: {},
         store,
         isError: false,
         isSent: false,
@@ -48,6 +49,7 @@ export default {
         },
         sendEmail(form) {
             form.flat_id = this.flat.id
+            store.isLoading = true;
             axios.post(store.endpointMail, form)
                 .then(res => {
                     this.isError = false;
@@ -56,6 +58,8 @@ export default {
                 })
                 .catch(err => {
                     this.isError = true;
+                }).then(() => {
+                    store.isLoading = false;
                 })
         },
         closeError() {
@@ -75,9 +79,23 @@ export default {
 <template>
     <div class="container">
         <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-        <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError" @closeSent="closeSent"
-            @sendEmail="sendEmail" />
-
+        <div class="row mt-5 mb-3">
+            <div v-if="flat.longitude" class="col col-sm-12 col-md-12 col-lg-8 mb-5">
+                <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
+            </div>
+            <div class="col col-sm-12 col-md-12 col-lg-4 pippo">
+                <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError"
+                    @closeSent="closeSent" @sendEmail="sendEmail" />
+            </div>
+        </div>
     </div>
 
 </template>
+
+<style lang="scss" scoped>
+.pippo {
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+</style>
