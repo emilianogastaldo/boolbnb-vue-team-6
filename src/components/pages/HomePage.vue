@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 .container {
     width: 100%;
-    height: calc(100vh - 160px);
+    height: calc(100% - 80px);
     overflow: auto;
 }
 </style>

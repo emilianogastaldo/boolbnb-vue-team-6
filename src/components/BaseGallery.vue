@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="container">
         <div
             class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
             <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 div {
-    height: calc(100vh - 160px);
+    // height: calc(100vh - 160px);
 
 }
 

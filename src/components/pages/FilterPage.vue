@@ -105,8 +105,8 @@ export default {
 </script>
 
 <template>
-    <!-- <SearchForm @sent-form="fetchFlats" class="d-none" /> -->
-    <div class="h-100">
+
+    <div>
         <AppSidebar :flats="flats" :flatServices="services" @send-form="setFilters" />
         <BaseGallery :flats="filteredFlats" />
 
@@ -116,7 +116,7 @@ export default {
 <style lang="scss" scoped>
 div {
     display: flex;
-
-
+    flex-grow: 1;
+    overflow: auto;
 }
 </style>
