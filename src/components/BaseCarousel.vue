@@ -48,6 +48,15 @@ export default {
     width: 100%;
     height: 100%;
     border: 1px solid black;
+    position: relative;
+
+    .figure {
+        position: relative;
+
+        img {
+            max-width: 100%;
+        }
+    }
 }
 
 button {
