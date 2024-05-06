@@ -8,8 +8,7 @@ export default {
     name: 'FilterPage',
     components: { BaseGallery, SearchForm, AppSidebar },
     data: () => ({
-        flats: [],
-        services: [],
+
         filterRooms: '',
         filterBathrooms: '',
         filterServices: [],
@@ -17,29 +16,8 @@ export default {
         store
     }),
     methods: {
-        async fetchFlats(address) {
-            console.log(address)
-            // Creo l'endpoint in base a se mi arriva un address o meno
-            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
-            // attivo il loader
-            store.isLoading = true;
-            try {
-                const res = await axios.get(endpoint);
-                // destrutturo i dati dalla risposta
-                const { data } = res;
-                const { flats, services } = data;
-                // stampo i risultati in console
-                // console.log(flats, services);
-                // riassegno la risposta all'array degli appartamenti
-                this.flats = flats;
-                // riassegno la risposta all'array dei servizi
-                this.services = services;
-            } catch (err) {
-                // segnalo un eventuale errore
-                console.error(err);
-            }
-            // Disattivo il loader
-            store.isLoading = false;
+        debug() {
+            console.log(store.services, store.flats);
         },
         setFilters(form) {
 
@@ -50,9 +28,9 @@ export default {
     },
     computed: {
         filteredFlats() {
-            let newFlats = this.flats.filter(flat => {
+            let newFlats = store.flats.filter(flat => {
                 if (this.filterRooms == 0) {
-                    return this.flats;
+                    return store.flats;
                 }
                 else {
                     return flat.room >= this.filterRooms;
@@ -98,8 +76,7 @@ export default {
         }
     },
     created() {
-        // invoco il metodo per la chiamata all'avvio della pagina
-        this.fetchFlats();
+        this.debug();
     }
 }
 </script>
@@ -107,7 +84,7 @@ export default {
 <template>
 
     <div>
-        <AppSidebar :flats="flats" :flatServices="services" @send-form="setFilters" />
+        <AppSidebar :flats="store.flats" :flatServices="store.services" @send-form="setFilters" />
         <BaseGallery :flats="filteredFlats" />
 
     </div>
