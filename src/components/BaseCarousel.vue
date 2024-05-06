@@ -25,7 +25,9 @@ export default {
 
 <template>
     <div id="carousel" class="carousel slide text-center">
-        <button @click="goToThePrev"></button>
+        <button @click="goToThePrev">
+            <font-awesome-icon :icon="'fas fa-circle-arrow-left'" />
+        </button>
         <div v-for="flat in flats" :key="flat.id" class="carousel-inner">
             <figure class="carousel-item" :class="{ 'active': flat.id === currentId }">
                 <img class="d-block img-fluid" :src="flat.image" :alt="flat.title">
@@ -36,7 +38,9 @@ export default {
             </figure>
 
         </div>
-        <button @click="goToTheNext"></button>
+        <button @click="goToTheNext">
+            <font-awesome-icon :icon="'fas fa-circle-arrow-right'" />
+        </button>
 
 
     </div>
@@ -63,5 +67,13 @@ export default {
 button {
     width: 50px;
     height: 50px;
+    padding: 0;
+    background-color: #051E34;
+    border: none;
+
+    .fa-circle-arrow-left,
+    .fa-circle-arrow-right {
+        color: #051E34;
+    }
 }
 </style>
