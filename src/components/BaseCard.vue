@@ -60,6 +60,10 @@ export default {
 ul {
     list-style-type: none;
     padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 .card {

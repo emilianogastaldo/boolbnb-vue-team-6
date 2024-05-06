@@ -11,7 +11,6 @@ export default {
     }),
     methods: {
         async fetchFlats(address) {
-            console.log(store.address);
             // Creo l'endpoint in base a se mi arriva un address o meno
             const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${store.address}`;
             // attivo il loader
@@ -46,7 +45,7 @@ export default {
 <template>
     <div class="container">
 
-        <BaseCarousel :flats="flats" />
+        <BaseCarousel :flats="store.flats" />
     </div>
 </template>
 

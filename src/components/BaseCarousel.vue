@@ -10,8 +10,13 @@ export default {
     }),
     computed: {
         activeId() {
+            let activeId = null;
 
-            return this.currentId === this.flats['id'];
+            this.flats.foreach(flat => {
+                activeId = flat.id;
+                return activeId;
+            })
+            return this.currentId = activeId;
         }
     },
 
