@@ -11,7 +11,7 @@ export default {
     computed: {
         activeId() {
 
-            return this.currentId === this.flats['id'];
+            return this.currentId = this.flats['id'];
         }
     },
     methods: {
