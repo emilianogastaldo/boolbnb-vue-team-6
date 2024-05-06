@@ -24,12 +24,11 @@ export default {
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="d-flex align-items-center">
-                    <h1 class="me-2">BoolBnb</h1>
                     <RouterLink to="/" class="home">
-                        Home
+                        <h2 class="me-2">BoolBnb</h2>
                     </RouterLink>
                     <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
-                        Filtri
+                        <p class="mb-0">Filtri</p>
                     </RouterLink>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -40,11 +39,17 @@ export default {
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <SearchForm @sent-form="saveAddress" class="" />
                     <ul class="navbar-nav text-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://localhost:8000/login">Accedi</a>
+                        <li class="nav-item me-3 ms-2">
+                            <a class="nav-link" href="http://localhost:8000/login">
+                                <font-awesome-icon icon="fa-solid fa-right-to-bracket" />
+                                <span class="ms-2">Accedi</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost:8000/register">Registrati</a>
+                            <a class="nav-link" href="http://localhost:8000/register">
+                                <font-awesome-icon icon="fa-regular fa-user" />
+                                <span class="ms-2">Registrati</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -64,13 +69,13 @@ nav {
     color: white;
 }
 
-h1 {
+h2 {
     color: #FF9900;
 }
 
 a {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: white;
 }
 
