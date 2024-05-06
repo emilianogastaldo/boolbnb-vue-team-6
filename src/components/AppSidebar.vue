@@ -29,7 +29,7 @@ export default {
 <template>
 
     <div class="sidebar text-center">
-        <div class="mt-3">
+        <div class="mt-2">
             <h5>Filtri</h5>
             <form @submit.prevent>
                 <div class="my-3">
@@ -51,16 +51,19 @@ export default {
                             v-model.trim="form.bathrooms" @change="$emit('send-form', form)">
                     </div>
                 </div>
-                <vue3-collapse v-model="open">
-                    <h5>Servizi</h5>
-                    <div class="mt-3 text-center services mt-2">
+                <!-- <vue3-collapse v-model="open"> -->
+                <div>
+                    <h5 class="mt-3">Servizi</h5>
+                    <div class="mt-3 text-center services">
                         <div v-for="(flatService, i) in flatServices" :key="i">
                             <label class="col-5" :for="flatService.id">{{ flatService.name }}</label>
                             <input class="col-5" :id="flatService.id" type="checkbox" :value="flatService.id"
                                 v-model="form.services" @change="$emit('send-form', form)">
                         </div>
                     </div>
-                </vue3-collapse>
+
+                </div>
+                <!-- </vue3-collapse> -->
 
             </form>
 
@@ -75,6 +78,7 @@ export default {
     flex-basis: 250px;
     padding: 10px;
     flex-shrink: 0;
+    overflow: hidden;
     // height: calc(100vh - 160px);
 
     form {

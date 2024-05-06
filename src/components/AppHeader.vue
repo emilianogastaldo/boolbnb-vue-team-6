@@ -8,29 +8,11 @@ export default {
         SearchForm
     },
     methods: {
-        async fetchFlats(address) {
-            console.log(address)
-            // Creo l'endpoint in base a se mi arriva un address o meno
-            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
-            // attivo il loader
-            store.isLoading = true;
-            try {
-                const res = await axios.get(endpoint);
-                // destrutturo i dati dalla risposta
-                const { data } = res;
-                const { flats, services } = data;
-                // stampo i risultati in console
-                // console.log(flats, services);
-                // riassegno la risposta all'array degli appartamenti
-                this.flats = flats;
-                // riassegno la risposta all'array dei servizi
-                this.services = services;
-            } catch (err) {
-                // segnalo un eventuale errore
-                console.error(err);
-            }
-            // Disattivo il loader
-            store.isLoading = false;
+        saveAddress(address) {
+            // stampo l'indirizzo in console
+            console.log(address);
+            // lo salvo nello store
+            store.address = address;
         }
     }
 }
@@ -55,7 +37,7 @@ export default {
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <SearchForm @sent-form="fetchFlats" class="" />
+                    <SearchForm @sent-form="saveAddress" class="" />
                     <ul class="navbar-nav text-end">
                         <li class="nav-item me-3 ms-2">
                             <a class="nav-link" href="http://localhost:8000/login">

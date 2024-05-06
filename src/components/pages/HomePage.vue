@@ -6,14 +6,13 @@ export default {
     name: 'HomePage',
     components: { BaseCarousel },
     data: () => ({
-        flats: [],
+        // flats: [],
         store
     }),
     methods: {
         async fetchFlats(address) {
-
             // Creo l'endpoint in base a se mi arriva un address o meno
-            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
+            const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${store.address}`;
             // attivo il loader
             store.isLoading = true;
             try {
@@ -24,9 +23,10 @@ export default {
                 // stampo i risultati in console
                 // console.log(flats, services);
                 // riassegno la risposta all'array degli appartamenti
-                this.flats = flats;
+                store.flats = flats;
                 // riassegno la risposta all'array dei servizi
-                this.services = services;
+                store.services = services;
+                console.log(store.services, store.flats);
             } catch (err) {
                 // segnalo un eventuale errore
                 console.error(err);
@@ -45,7 +45,7 @@ export default {
 <template>
     <div class="container">
 
-        <BaseCarousel :flats="flats" />
+        <BaseCarousel :flats="store.flats" />
     </div>
 </template>
 
