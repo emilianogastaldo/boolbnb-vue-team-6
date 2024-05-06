@@ -6,7 +6,7 @@ export default {
     },
     data: () => ({
         currentId: 1,
-        flat: null,
+
     }),
     computed: {
         activeId() {
@@ -14,12 +14,7 @@ export default {
             return this.currentId = this.flats['id'];
         }
     },
-    methods: {
-        destructureFlat() {
-            const { flat } = this.flats;
-            return this.flat = flat;
-        }
-    }
+
 
 }
 </script>
