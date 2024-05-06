@@ -20,7 +20,7 @@ export default {
     <RouterView />
   </div>
 
-  <AppFooter />
+  <!-- <AppFooter /> -->
 </template>
 
 <style lang="scss">
