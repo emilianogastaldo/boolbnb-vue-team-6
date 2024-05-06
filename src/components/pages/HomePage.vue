@@ -11,7 +11,6 @@ export default {
     }),
     methods: {
         async fetchFlats(address) {
-            console.log('sono la pagina Home');
             // Creo l'endpoint in base a se mi arriva un address o meno
             const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}`;
             // attivo il loader

@@ -20,7 +20,6 @@ export default {
     }),
     methods: {
         async fetchFlats(address) {
-            console.log('sono la pagina dei filtri');
             const stringServices = JSON.stringify(this.services);
             // Creo l'endpoint in base a se mi arriva un address o meno
             // const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}&room=${this.room}&bed=${this.bed}&services=${stringServices}`;
@@ -31,7 +30,7 @@ export default {
                     params: {
                         address,
                         room: this.room,
-                        bed: this.bed,
+                        bathroom: this.bathroom,
                         services: stringServices
                     }
                 });
@@ -50,6 +49,43 @@ export default {
             // Disattivo il loader
             store.isLoading = false;
         },
+        async fetchFlatsFilters() {
+            const stringServices = JSON.stringify(this.services);
+            // Creo l'endpoint in base a se mi arriva un address o meno
+            // const endpoint = !address ? store.baseUri : `${store.baseUri}?address=${address}&room=${this.room}&bed=${this.bed}&services=${stringServices}`;
+            // attivo il loader                             ?room=1&bed=1&services=1,2,4,8&distance=1&address=via prova
+            store.isLoading = true;
+            try {
+                const res = await axios.get(store.baseUri, {
+                    params: {
+                        address: store.address,
+                        room: this.room,
+                        bathroom: this.bathroom,
+                        services: stringServices
+                    }
+                });
+                // destrutturo i dati dalla risposta
+                const { data } = res;
+                const { flats, services } = data;
+                // stampo i risultati in console
+                // riassegno la risposta all'array degli appartamenti
+                this.flats = flats;
+                // riassegno la risposta all'array dei servizi
+                this.flatServices = services;
+            } catch (err) {
+                // segnalo un eventuale errore
+                console.error(err);
+            }
+            // Disattivo il loader
+            store.isLoading = false;
+        },
+        emptyFilters() {
+            this.address = '';
+            this.room = '';
+            this.bathroom = '';
+            this.services = [];
+            this.range = '';
+        }
     },
     created() {
         this.fetchFlats(this.address);
@@ -59,11 +95,10 @@ export default {
 
 <template>
     <div class="container">
-        {{ store.address }}
         <SearchForm @send="fetchFlats" class="mx-auto" />
         <div class="mt-2">
             <h5>Filtri</h5>
-            <form @submit.prevent="fetchFlats(address)">
+            <form @submit.prevent="fetchFlatsFilters">
                 <div class="row">
                     <div class="col-6">
                         <label for="range">Raggio di ricerca {{ range }} km</label>
@@ -91,7 +126,10 @@ export default {
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-sm btn-primary">Cerca</button>
+                <div class="d-flex gap-3 mt-2">
+                    <button class="btn btn-sm btn-primary">Cerca</button>
+                    <span @click="emptyFilters" class="btn btn-sm btn-warning">Svuota i campi</span>
+                </div>
             </form>
         </div>
     </div>
