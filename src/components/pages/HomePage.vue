@@ -45,7 +45,7 @@ export default {
 <template>
     <div class="container">
 
-        <BaseCarousel :flats="flats" />
+        <BaseCarousel :flats="store.flats" />
     </div>
 </template>
 

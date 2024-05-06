@@ -10,8 +10,8 @@ export default {
     }),
     computed: {
         activeId() {
-
-            return this.currentId = this.flats['id'];
+            const [flat] = this.flats;
+            return this.currentId = flat['id'];
         }
     },
 
