@@ -57,7 +57,7 @@ export default {
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <SearchForm @sent-form="fetchFlats" class="" />
                     <ul class="navbar-nav text-end">
-                        <li class="nav-item">
+                        <li class="nav-item me-3 ms-2">
                             <a class="nav-link" href="http://localhost:8000/login">
                                 <font-awesome-icon icon="fa-solid fa-right-to-bracket" />
                                 <span class="ms-2">Accedi</span>
