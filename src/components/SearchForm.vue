@@ -64,11 +64,11 @@ export default {
 
 <template>
     <nav class="navbar position-relative">
-        <div class="container">
-            <form class="d-flex" role="search" @submit.prevent="onFormSubmit">
-                <input class="form-control me-2" type="search" placeholder="Cerca un appartamento.." aria-label="Search"
-                    v-model.trim="address" @keyup="getApiFlats">
-                <button class="btn btn-outline-light">
+        <div>
+            <form class="d-flex align-items-center" role="search" @submit.prevent="onFormSubmit">
+                <input class="form-control search-input" type="search" placeholder="Cerca un appartamento.."
+                    aria-label="Search" v-model.trim="address" @keyup="getApiFlats">
+                <button class="btn text-white">
                     <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
                 </button>
             </form>
@@ -99,5 +99,9 @@ li button {
 
 .pointer {
     cursor: pointer;
+}
+
+.search-input {
+    height: 30px;
 }
 </style>
