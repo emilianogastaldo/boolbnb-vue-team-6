@@ -24,10 +24,16 @@ export default {
 </script>
 
 <template>
-    <div id="carousel" class="carousel slide text-center">
-        <button @click="goToThePrev">
-            <font-awesome-icon :icon="'fas fa-circle-arrow-left'" />
-        </button>
+    <div id="carousel" class="carousel slide">
+        <div class="buttons">
+
+            <button @click="goToThePrev">
+                <font-awesome-icon :icon="'fas fa-arrow-left'" />
+            </button>
+            <button @click="goToTheNext">
+                <font-awesome-icon :icon="'fas fa-arrow-right'" />
+            </button>
+        </div>
         <div v-for="flat in flats" :key="flat.id" class="carousel-inner">
             <figure class="carousel-item" :class="{ 'active': flat.id === currentId }">
                 <img class="d-block img-fluid" :src="flat.image" :alt="flat.title">
@@ -38,9 +44,6 @@ export default {
             </figure>
 
         </div>
-        <button @click="goToTheNext">
-            <font-awesome-icon :icon="'fas fa-circle-arrow-right'" />
-        </button>
 
 
     </div>
@@ -55,25 +58,38 @@ export default {
     position: relative;
     border-radius: 20px;
 
+    .buttons {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+
+        button {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            background-color: #051E34;
+            border: none;
+            border-radius: 50%;
+
+            .fa-arrow-left,
+            .fa-arrow-right {
+                color: #FF9900;
+            }
+        }
+    }
+
     .figure {
         position: relative;
 
         img {
             max-width: 100%;
         }
-    }
-}
 
-button {
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    background-color: #051E34;
-    border: none;
-
-    .fa-circle-arrow-left,
-    .fa-circle-arrow-right {
-        color: #051E34;
+        figcaption {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
     }
 }
 </style>
