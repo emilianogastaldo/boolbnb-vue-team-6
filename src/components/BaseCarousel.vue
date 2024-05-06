@@ -12,8 +12,9 @@ export default {
         activeId() {
             let activeId = null;
 
-            flats.foreach(flat => {
+            this.flats.foreach(flat => {
                 activeId = flat.id;
+                return activeId;
             })
             return this.currentId = activeId;
         }
