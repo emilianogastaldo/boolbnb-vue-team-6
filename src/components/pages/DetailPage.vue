@@ -48,6 +48,7 @@ export default {
         },
         sendEmail(form) {
             form.flat_id = this.flat.id
+            store.isLoading = true;
             axios.post(store.endpointMail, form)
                 .then(res => {
                     this.isError = false;
@@ -56,6 +57,8 @@ export default {
                 })
                 .catch(err => {
                     this.isError = true;
+                }).then(() => {
+                    store.isLoading = false;
                 })
         },
         closeError() {
@@ -75,9 +78,10 @@ export default {
 <template>
     <div class="container">
         <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-        <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError" @closeSent="closeSent"
-            @sendEmail="sendEmail" />
-
+        <div class="d-flex alig-items-center justify-content-center">
+            <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError" @closeSent="closeSent"
+                @sendEmail="sendEmail" />
+        </div>
     </div>
 
 </template>
