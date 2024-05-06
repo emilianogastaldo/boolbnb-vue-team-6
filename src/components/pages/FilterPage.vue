@@ -116,6 +116,7 @@ export default {
 <style lang="scss" scoped>
 div {
     display: flex;
-    height: calc(100vh - 80px);
+    flex-grow: 1;
+    overflow: auto;
 }
 </style>

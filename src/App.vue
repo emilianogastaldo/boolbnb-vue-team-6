@@ -15,12 +15,12 @@ export default {
 <template>
   <AppLoader v-if="store.isLoading" />
   <AppHeader />
-  <div v-show="!store.isLoading">
+  <div class="main" -show="!store.isLoading">
     <!-- pagine -->
     <RouterView />
+    <AppFooter />
   </div>
 
-  <!-- <AppFooter /> -->
 </template>
 
 <style lang="scss">

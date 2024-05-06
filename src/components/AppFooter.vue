@@ -36,7 +36,7 @@ export default {
 footer {
     background-color: #051E34;
     color: white;
-    height: 80px;
+    flex-basis: 80px;
 }
 
 ul {
