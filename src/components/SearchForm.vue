@@ -49,6 +49,7 @@ export default {
         onFormSubmit() {
             this.$emit('sent-form', this.address);
             this.clearSearch();
+            this.$router.push({ name: 'filter' });
         }
     },
     emits: ['sent-form'],

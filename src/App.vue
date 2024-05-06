@@ -15,7 +15,7 @@ export default {
 <template>
   <AppLoader v-if="store.isLoading" />
   <AppHeader />
-  <div class="main" -show="!store.isLoading">
+  <div class="main" v-show="!store.isLoading">
     <!-- pagine -->
     <RouterView />
     <AppFooter />
