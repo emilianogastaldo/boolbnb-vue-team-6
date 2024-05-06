@@ -79,7 +79,7 @@ export default {
 <template>
     <div class="container">
         <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-5 mb-3">
+        <div class="row mt-5 mb-3">
             <div v-if="flat.longitude" class="col col-sm-12 col-md-12 col-lg-8 mb-5">
                 <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
             </div>
@@ -95,7 +95,6 @@ export default {
 <style lang="scss" scoped>
 .pippo {
     border-radius: 8px;
-    // box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
     box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
