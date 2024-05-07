@@ -45,14 +45,10 @@ export default {
                 this.closeDropdown();
             }
         },
-        clearSearch() {
-            this.address = '';
-        },
         sendAddress() {
             // store.address = this.address;
             this.$emit('send', this.address);
             store.address = this.address;
-            this.clearSearch();
             this.$router.push({ name: 'filter' });
         }
     },
@@ -71,7 +67,7 @@ export default {
         <form class="d-flex align-items-center" role="search" @submit.prevent="sendAddress">
             <input class="form-control search-input" type="search" placeholder="Cerca un appartamento.."
                 aria-label="Search" v-model.trim="address" @keyup="getApiFlats">
-            <button class="btn btn-sm btn-primary">
+            <button class="btn btn-primary ms-1">
                 <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
             </button>
             <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
@@ -103,7 +99,6 @@ li button {
 }
 
 .search-input {
-    height: 30px;
     width: 400px;
 }
 </style>
