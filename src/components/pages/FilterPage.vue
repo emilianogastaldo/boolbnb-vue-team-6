@@ -103,7 +103,7 @@ export default {
 <template>
     <!-- MODALE E SEARCHBAR -->
     <div class="container">
-        <div class="d-flex gap-3 align-items-center ">
+        <div class="d-flex gap-3 align-items-center mt-3">
             <SearchForm @send="fetchFlats" />
             <button type="button" class="btn btn-primary filter" data-bs-toggle="modal" data-bs-target="#modal">
                 <font-awesome-icon icon="fa-solid fa-filter" />
