@@ -16,7 +16,8 @@ export default {
         address: '',
         streetList: [],
         message: '',
-        isDropdownOpen: false
+        isDropdownOpen: false,
+        hasResults: false
     }),
     methods: {
         getApiFlats() {
@@ -26,6 +27,7 @@ export default {
                     this.streetList = res.data.results;
                     this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
                     this.isDropdownOpen = true;
+                    this.hasResults = this.streetList.length > 0;
                 })
                 .catch(err => {
                     console.error('Si è verificato un errore durante il recupero dei dati dall\'API:', err);
