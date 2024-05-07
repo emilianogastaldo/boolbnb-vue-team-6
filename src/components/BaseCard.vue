@@ -30,13 +30,15 @@ export default {
 <template>
     <div>
         <RouterLink v-if="!isDetail" :to="{ name: 'detail', params: { slug: flat.slug } }" class="text-decoration-none">
-            <div class="card custom d-flex align-items-center justify-content-between flex-column">
+            <div class="card custom">
                 <img :src="flat.image" class="card-img rounded">
-                <h5 class="mb-0">{{ flat.title }}</h5>
-                <p class="card-text mb-0">{{ flat.address }}</p>
-                <p v-if="flat.distance" class="mb-0">Distanza dall'indirizzo cercato: <span class="fw-bold">{{
-                    getFormatedDistance }}</span>
-                </p>
+                <div>
+                    <h5 class="mt-2">{{ flat.title }}</h5>
+                    <p class="card-text mb-0">{{ flat.address }}</p>
+                    <p v-if="flat.distance" class="mb-0">Distanza dall'indirizzo cercato: <span class="fw-bold">{{
+                        getFormatedDistance }}</span>
+                    </p>
+                </div>
             </div>
         </RouterLink>
     </div>
@@ -76,12 +78,18 @@ export default {
     box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.3);
     padding: 15px;
     height: 370px;
+    transition: transform 0.4s;
 }
 
 .card-img {
     max-width: 300px;
     height: 200px;
 }
+
+.custom:hover {
+    transform: scale(1.05);
+}
+
 
 .card {
     border: none;
