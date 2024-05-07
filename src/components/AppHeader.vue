@@ -15,7 +15,7 @@ export default {
             <div class="container">
                 <div class="d-flex align-items-center">
                     <RouterLink to="/" class="home d-flex align-items-center">
-                        <h2 class="me-2">BoolBnb</h2>
+                        <h2 class="me-2 d-none d-md-inline">BoolBnb</h2>
                         <img src="../assets/img/bbb100.png" alt="">
                     </RouterLink>
                     <!-- <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
@@ -53,6 +53,7 @@ export default {
 <style lang="scss" scoped>
 header {
     height: 80px;
+    z-index: 1;
 }
 
 img {

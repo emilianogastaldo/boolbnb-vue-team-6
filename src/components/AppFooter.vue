@@ -8,7 +8,7 @@ export default {
 <template>
     <footer class="py-2">
         <div class="container">
-            <div class="row row-cols-sm-1 row-cols-md-2 text-center">
+            <div class="row text-center">
                 <div class="col">
                     <h2>BoolBnb</h2>
                     <ul class="d-flex gap-3 justify-content-center pointer">
