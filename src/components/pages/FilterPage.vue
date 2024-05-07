@@ -3,11 +3,12 @@ import { services } from '@tomtom-international/web-sdk-services';
 import { store } from '../../data/store.js';
 import AppSidebar from '../AppSidebar.vue'
 import BaseGallery from '../BaseGallery.vue';
+import BaseCard from '../BaseCard.vue';
 import SearchForm from '../SearchForm.vue';
 import axios from 'axios';
 export default {
     name: 'FilterPage',
-    components: { BaseGallery, SearchForm, AppSidebar },
+    components: { BaseGallery, SearchForm, AppSidebar, BaseCard },
     data: () => ({
         flats: [],
         flatServices: [],
@@ -15,7 +16,7 @@ export default {
         room: '',
         bathroom: '',
         services: [],
-        range: '',
+        distance: '',
         store,
     }),
     methods: {
@@ -61,7 +62,8 @@ export default {
                         address: store.address,
                         room: this.room,
                         bathroom: this.bathroom,
-                        services: stringServices
+                        services: stringServices,
+                        distance: this.distance
                     }
                 });
                 // destrutturo i dati dalla risposta
@@ -84,7 +86,15 @@ export default {
             this.room = '';
             this.bathroom = '';
             this.services = [];
-            this.range = '';
+            this.distance = '';
+        }
+    },
+    computed: {
+        sponsoredFlats() {
+            return this.flats.filter(flat => flat.sponsored);
+        },
+        nonSponsoredFlats() {
+            return this.flats.filter(flat => !flat.sponsored);
         }
     },
     created() {
@@ -94,49 +104,95 @@ export default {
 </script>
 
 <template>
+    <!-- MODALE E SEARCHBAR -->
     <div class="container">
-        <SearchForm @send="fetchFlats" class="mx-auto" />
-        <div class="mt-2">
-            <h5>Filtri</h5>
-            <form @submit.prevent="fetchFlatsFilters">
-                <div class="row">
-                    <div class="col-6">
-                        <label for="range">Raggio di ricerca {{ range }} km</label>
-                        <input type="range" class="form-range" id="range" min="1" max="20" step="1" v-model="range">
+        <div class="d-flex gap-3 justify-content-center">
+            <SearchForm @send="fetchFlats" />
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
+                Filtri avanzati
+            </button>
+        </div>
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel">Filtri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="col">
-                        <label for="rooms">Numero di stanze:</label>
-                        <input id="rooms" type="number" min="0" step="1" v-model="room">
-                    </div>
-                    <div class="col">
-                        <label for="bathrooms">Numero di bagni:</label>
-                        <input id="bathrooms" type="number" min="0" step="1" v-model="bathroom">
-                    </div>
-                </div>
-                <h5 class="mt-3">Servizi</h5>
-                <div class="mt-3">
-                    <div class="row row-cols-6">
-                        <div class="col" v-for="(flatService, i) in flatServices" :key="i">
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label" :for="flatService.id">{{ flatService.name }}
-                                </label>
-                                <input class="form-check-input" :id="flatService.id" type="checkbox"
-                                    :value="flatService.id" v-model="services">
-                            </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form @submit.prevent="fetchFlatsFilters">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="distance">Raggio di ricerca {{ distance }} km</label>
+                                        <input type="range" class="form-range" id="distance" min="1" max="20" step="1"
+                                            v-model="distance">
+                                    </div>
+                                    <div class="col">
+                                        <label for="rooms">Numero di stanze:</label>
+                                        <input id="rooms" type="number" min="0" step="1" v-model="room">
+                                    </div>
+                                    <div class="col">
+                                        <label for="bathrooms">Numero di bagni:</label>
+                                        <input id="bathrooms" type="number" min="0" step="1" v-model="bathroom">
+                                    </div>
+                                </div>
+                                <h5 class="mt-3">Servizi</h5>
+                                <div class="mt-3">
+                                    <div class="row row-cols-3">
+                                        <div class="col" v-for="(flatService, i) in flatServices" :key="i">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" :for="flatService.id">{{
+                                                    flatService.name }}
+                                                </label>
+                                                <input class="form-check-input" :id="flatService.id" type="checkbox"
+                                                    :value="flatService.id" v-model="services">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3 mt-2">
+                                    <button class="btn btn-primary" data-bs-dismiss="modal">Cerca</button>
+                                    <span @click="emptyFilters" class="btn btn-warning">Svuota i campi</span>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex gap-3 mt-2">
-                    <button class="btn btn-sm btn-primary">Cerca</button>
-                    <span @click="emptyFilters" class="btn btn-sm btn-warning">Svuota i campi</span>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-
+    <!-- LISTA SPONSORIZZATI -->
+    <div class="container">
+        <div
+            class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
+            <div v-for="flat in sponsoredFlats" :key="flat.id" class="col">
+                <div class="position-relative">
+                    <BaseCard :flat="flat" :isDetail="false" />
+                    <font-awesome-icon icon="fa-solid fa-crown" class="premium" />
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- <AppSidebar :flats="store.flats" :flatServices="store.services" @send-form="" /> -->
+    <!-- LISTA NORMALI -->
     <BaseGallery :flats="flats" />
 
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.premium {
+    color: #ffd700;
+    background-color: #141155;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 8px;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+</style>
