@@ -30,9 +30,9 @@ export default {
                 const res = await axios.get(store.baseUri, {
                     params: {
                         address,
-                        room: this.room,
-                        bathroom: this.bathroom,
-                        services: stringServices
+                        //     room: this.room,
+                        //     bathroom: this.bathroom,
+                        //     services: stringServices
                     }
                 });
                 // destrutturo i dati dalla risposta
@@ -98,7 +98,7 @@ export default {
         }
     },
     created() {
-        this.fetchFlats(this.address);
+        this.fetchFlats(store.address);
     }
 }
 </script>
