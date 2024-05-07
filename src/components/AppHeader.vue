@@ -17,9 +17,9 @@ export default {
                     <RouterLink to="/" class="home">
                         <h2 class="me-2">BoolBnb</h2>
                     </RouterLink>
-                    <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
+                    <!-- <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
                         <p class="mb-0">Filtri</p>
-                    </RouterLink>
+                    </RouterLink> -->
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
