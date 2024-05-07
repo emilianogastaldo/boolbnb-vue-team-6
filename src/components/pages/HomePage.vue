@@ -77,11 +77,13 @@ export default {
 }
 
 .immagine {
-    max-width: 800px;
+    height: 800px;
+    width: 1000px;
     position: absolute;
     z-index: -1;
-    top: 120px;
-    right: 18%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 20px;
 }
 </style>
