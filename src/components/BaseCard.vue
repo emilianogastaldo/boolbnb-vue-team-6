@@ -10,6 +10,20 @@ export default {
         flat: Object,
         isDetail: Boolean
     },
+    computed: {
+        getFormatedDistance() {
+            let message = '';
+            if (this.flat.distance > 0 && this.flat.distance < 1) {
+                const dist = (1000 * this.flat.distance).toFixed(0);
+                message = dist + ' m';
+            }
+            else if (this.flat.distance >= 1) {
+                const dist = this.flat.distance.toFixed(1);
+                message = dist + ' km';
+            }
+            return message;
+        }
+    }
 }
 </script>
 
@@ -21,6 +35,7 @@ export default {
             <div class="card-body">
                 <h5 class="card-title">{{ flat.title }}</h5>
                 <p class="card-text">{{ flat.address }}</p>
+                <p>{{ getFormatedDistance }}</p>
             </div>
         </RouterLink>
     </div>
@@ -55,7 +70,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-
 .card {
     border: none;
 }

@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '../data/store.js';
 const baseUri = 'http://localhost:8000/api/flats/';
 // Script per visualizzare gli appartamenti ricevuti dalla chiamata API
 const keyApi = 'MZLTSagj2eSVFwXRWk7KqzDDNLrEA6UF';
@@ -11,6 +12,7 @@ const radius = '20000';
 export default {
     name: 'SearchForm',
     data: () => ({
+        store,
         address: '',
         streetList: [],
         message: '',
@@ -22,10 +24,8 @@ export default {
             if (this.address == '') return;
             axios.get(`https://api.tomtom.com/search/2/search/${this.address}.json?key=${keyApi}&countrySet=IT&limit=5&lat=${lat}&lon=${lon}&radius=${radius}`)
                 .then(res => {
-                    console.log(res.data.results);
                     this.streetList = res.data.results;
                     this.message = !this.streetList.length ? 'Non ci sono appartamenti' : '';
-                    console.log(this.message);
                     this.isDropdownOpen = true;
                     this.hasResults = this.streetList.length > 0;
                 })
@@ -48,13 +48,15 @@ export default {
         clearSearch() {
             this.address = '';
         },
-        onFormSubmit() {
-            this.$emit('sent-form', this.address);
+        sendAddress() {
+            // store.address = this.address;
+            this.$emit('send', this.address);
+            store.address = this.address;
             this.clearSearch();
             this.$router.push({ name: 'filter' });
         }
     },
-    emits: ['sent-form'],
+    emits: ['send'],
     mounted() {
         document.addEventListener('click', this.handleDocumentClick);
     },
@@ -66,29 +68,26 @@ export default {
 
 <template>
     <nav class="navbar position-relative">
-        <div>
-            <form class="d-flex align-items-center" role="search" @submit.prevent="onFormSubmit">
-                <input class="form-control search-input" type="search" placeholder="Cerca un appartamento.."
-                    aria-label="Search" v-model.trim="address" @keyup="getApiFlats">
-                <button class="btn text-white">
-                    <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
-                </button>
-            </form>
-        </div>
-        <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
-            <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
-                v-for="(street, i) in streetList" :key="i" :class="{ pointer: street.address }">
-                {{ street.address.freeformAddress }}
-            </li>
-            <li class="list-group-item" v-if="message">{{ message }}</li>
-        </ul>
+        <form class="d-flex align-items-center" role="search" @submit.prevent="sendAddress">
+            <input class="form-control search-input" type="search" placeholder="Cerca un appartamento.."
+                aria-label="Search" v-model.trim="address" @keyup="getApiFlats">
+            <button class="btn btn-sm btn-primary">
+                <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
+            </button>
+            <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
+                <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
+                    v-for="(street, i) in streetList" :key="i" :class="{ pointer: street.address }">
+                    {{ street.address.freeformAddress }}
+                </li>
+                <li class="list-group-item" v-if="message">{{ message }}</li>
+            </ul>
+        </form>
     </nav>
 </template>
 
 <style lang="scss" scoped>
 .autocomplete {
     top: 90%;
-    left: 3%;
     z-index: 1;
 }
 
@@ -105,5 +104,6 @@ li button {
 
 .search-input {
     height: 30px;
+    width: 400px;
 }
 </style>

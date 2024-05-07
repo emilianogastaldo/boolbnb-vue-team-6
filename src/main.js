@@ -42,6 +42,7 @@ import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import App from './App.vue'
 import AppLoader from './components/AppLoader.vue';
 import router from './assets/router/index.js';
@@ -81,13 +82,11 @@ library.add(faMugSaucer,
     faYoutube,
     faXTwitter,
     faInstagram,
-
     faArrowLeft,
     faArrowRight,
-
     faUser,
-    faRightToBracket
-
+    faRightToBracket,
+    faCrown,
 );
 createApp(App)
     .component('AppLoader', AppLoader)

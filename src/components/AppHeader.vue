@@ -1,20 +1,10 @@
 <script>
 import SearchForm from './SearchForm.vue';
-import axios from 'axios';
-import { store } from '../data/store';
 export default {
     name: 'AppHeader',
     components: {
         SearchForm
     },
-    methods: {
-        saveAddress(address) {
-            // stampo l'indirizzo in console
-            console.log(address);
-            // lo salvo nello store
-            store.address = address;
-        }
-    }
 }
 
 </script>
@@ -37,7 +27,7 @@ export default {
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <SearchForm @sent-form="saveAddress" class="" />
+                    <!-- <SearchForm /> -->
                     <ul class="navbar-nav text-end">
                         <li class="nav-item me-3 ms-2">
                             <a class="nav-link" href="http://localhost:8000/login">
