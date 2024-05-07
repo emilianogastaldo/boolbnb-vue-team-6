@@ -176,7 +176,7 @@ export default {
     </div>
     <!-- <AppSidebar :flats="store.flats" :flatServices="store.services" @send-form="" /> -->
     <!-- LISTA NORMALI -->
-    <BaseGallery :flats="flats" />
+    <BaseGallery :flats="nonSponsoredFlats" />
 
 </template>
 
