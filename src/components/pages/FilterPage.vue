@@ -16,7 +16,7 @@ export default {
         room: '',
         bathroom: '',
         services: [],
-        distance: '10',
+        distance: '20',
         store,
     }),
     methods: {
