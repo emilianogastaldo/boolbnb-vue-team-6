@@ -15,7 +15,7 @@ export default {
 <template>
     <div class="container">
         <div
-            class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none my-2">
+            class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 text-decoration-none my-2 pb-4">
             <BaseCard v-for="flat in flats" :key="flat.id" :flat="flat" :isDetail="false" />
         </div>
     </div>
