@@ -79,7 +79,7 @@ export default {
 <template>
     <div class="container">
         <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
-        <div class="row mt-5 mb-3">
+        <div class="row mt-5 mb-3 me-2">
             <div v-if="flat.longitude" class="col col-sm-12 col-md-12 col-lg-8 mb-5">
                 <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
             </div>

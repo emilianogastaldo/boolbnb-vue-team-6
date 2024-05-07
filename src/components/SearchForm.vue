@@ -63,22 +63,24 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar position-relative">
-        <form class="d-flex align-items-center" role="search" @submit.prevent="sendAddress">
-            <input class="form-control search-input" type="search" placeholder="Cerca un appartamento.."
-                aria-label="Search" v-model.trim="address" @keyup="getApiFlats">
-            <button class="btn btn-primary ms-1">
-                <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
-            </button>
-            <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
-                <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
-                    v-for="(street, i) in streetList" :key="i" :class="{ pointer: street.address }">
-                    {{ street.address.freeformAddress }}
-                </li>
-                <li class="list-group-item" v-if="message">{{ message }}</li>
-            </ul>
-        </form>
-    </nav>
+    <div class="">
+        <nav class="navbar position-relative">
+            <form class="d-flex align-items-center" role="search" @submit.prevent="sendAddress">
+                <input class="form-control search-input" type="search" placeholder="Cerca un appartamento.."
+                    aria-label="Search" v-model.trim="address" @keyup="getApiFlats">
+                <button class="btn btn-primary ms-1">
+                    <font-awesome-icon :icon="'fas fa-magnifying-glass'" />
+                </button>
+                <ul v-if="isDropdownOpen" class="list-group position-absolute autocomplete">
+                    <li @click="setAddress(street.address.freeformAddress)" class="list-group-item"
+                        v-for="(street, i) in streetList" :key="i" :class="{ pointer: street.address }">
+                        {{ street.address.freeformAddress }}
+                    </li>
+                    <li class="list-group-item" v-if="message">{{ message }}</li>
+                </ul>
+            </form>
+        </nav>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -99,6 +101,6 @@ li button {
 }
 
 .search-input {
-    width: 400px;
+    width: 250px;
 }
 </style>
