@@ -14,8 +14,9 @@ export default {
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="d-flex align-items-center">
-                    <RouterLink to="/" class="home">
+                    <RouterLink to="/" class="home d-flex align-items-center">
                         <h2 class="me-2">BoolBnb</h2>
+                        <img src="../assets/img/bbb100.png" alt="">
                     </RouterLink>
                     <!-- <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
                         <p class="mb-0">Filtri</p>
@@ -52,6 +53,10 @@ export default {
 <style lang="scss" scoped>
 header {
     height: 80px;
+}
+
+img {
+    height: 50px;
 }
 
 nav {
