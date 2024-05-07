@@ -30,9 +30,6 @@ export default {
                 const res = await axios.get(store.baseUri, {
                     params: {
                         address,
-                        //     room: this.room,
-                        //     bathroom: this.bathroom,
-                        //     services: stringServices
                     }
                 });
                 // destrutturo i dati dalla risposta
@@ -106,10 +103,11 @@ export default {
 <template>
     <!-- MODALE E SEARCHBAR -->
     <div class="container">
-        <div class="d-flex gap-3 justify-content-center">
+        <div class="d-flex gap-3 align-items-center ">
             <SearchForm @send="fetchFlats" />
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-                Filtri avanzati
+            <button type="button" class="btn btn-primary filter" data-bs-toggle="modal" data-bs-target="#modal">
+                <font-awesome-icon icon="fa-solid fa-filter" />
+                <span class="ms-2">Filtri avanzati</span>
             </button>
         </div>
         <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -194,5 +192,9 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.filter {
+    height: 35px;
 }
 </style>
