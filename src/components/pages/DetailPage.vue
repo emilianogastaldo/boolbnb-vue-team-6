@@ -80,10 +80,10 @@ export default {
     <div class="container">
         <BaseCard v-if="!store.isLoading && flat" :flat="flat" :isDetail="true" />
         <div class="row mt-5 mb-3 me-2">
-            <div v-if="flat.longitude" class="col col-sm-12 col-md-12 col-lg-8 mb-5">
+            <div v-if="flat.longitude" class="col-12 col-lg-8 mb-5">
                 <FlatMap :lon="flat.longitude" :lat="flat.latitude" />
             </div>
-            <div class="col col-sm-12 col-md-12 col-lg-4 pippo">
+            <div class="col-12 col-lg-4 pippo">
                 <EmailForm :isError="isError" :isSent="isSent" :form="form" @closeError="closeError"
                     @closeSent="closeSent" @sendEmail="sendEmail" />
             </div>
