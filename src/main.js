@@ -83,7 +83,7 @@ library.add(faMugSaucer,
     faInstagram,
 
     faArrowLeft,
-    faArrowRight
+    faArrowRight,
 
     faUser,
     faRightToBracket
