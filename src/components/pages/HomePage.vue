@@ -46,7 +46,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container wrapper">
         <div class="d-flex flex-column align-items-center position-relative">
             <div class="d-flex flex-column align-items-center ricerca">
                 <h1>Benvenuti in BoolBnb</h1>
@@ -62,26 +62,25 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.container {
+.wrapper {
     width: 100%;
     height: calc(100% - 80px);
     overflow: auto;
 }
 
 .ricerca {
-    margin-top: 10px;
+    margin-top: 2rem;
     background-color: white;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.2) -4px 9px 25px -6px;
+    box-shadow: rgba(0, 0, 0, 0.3) -4px 9px 25px -6px;
 }
 
 .immagine {
-    height: 800px;
-    width: 1000px;
+    max-width: 1000px;
     position: absolute;
     z-index: -1;
-    top: 50%;
+    top: 180%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
