@@ -29,9 +29,12 @@ export default {
 
 <template>
     <div>
-        <RouterLink v-if="!isDetail" :to="{ name: 'detail', params: { slug: flat.slug } }" class="text-decoration-none">
+        <RouterLink v-if="!isDetail" :to="{ name: 'detail', params: { slug: flat.slug } }"
+            class="text-decoration-none d-flex alig-items-center justify-content-center">
             <div class="card custom">
-                <img :src="flat.image" class="card-img rounded">
+                <div class="image-container">
+                    <img :src="flat.image" class="card-img rounded">
+                </div>
                 <div>
                     <h5 class="mt-2">{{ flat.title }}</h5>
                     <p class="card-text mb-0">{{ flat.address }}</p>
@@ -82,7 +85,7 @@ export default {
 }
 
 .card-img {
-    max-width: 300px;
+    max-width: 310px;
     height: 200px;
 }
 
@@ -120,5 +123,11 @@ export default {
 .image-fluid {
     width: 100%;
     height: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .custom {
+        width: 330px;
+    }
 }
 </style>
