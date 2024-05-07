@@ -53,18 +53,10 @@ export default {
                 <p>Ricerca un appartamento nei pressi di Roma</p>
                 <SearchForm />
             </div>
-
             <img class="immagine"
                 src="https://staticgeopop.akamaized.net/wp-content/uploads/sites/32/2022/10/iStock-177303568.jpg?im=AspectCrop=(16,9);"
                 alt="colosseo">
-
         </div>
-
-
-
-
-
-
         <!-- <BaseCarousel :flats="flats" /> -->
     </div>
 </template>
