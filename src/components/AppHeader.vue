@@ -17,14 +17,15 @@ export default {
 
                     <RouterLink to="/" class="home d-flex align-items-center gap-3">
                         <img src="../assets/img/bbb100.png" alt="">
-                        <h2 class="me-2 d-none d-md-inline">BoolBnb</h2>
+                        <h2 class="me-2 d-none d-md-inline orange">BoolBnb</h2>
                     </RouterLink>
                     <!-- <RouterLink class="ms-3 home" :to="{ name: 'filter' }">
                         <p class="mb-0">Filtri</p>
                     </RouterLink> -->
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler bg-orange" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,14 +34,14 @@ export default {
                     <ul class="navbar-nav text-end">
                         <li class="nav-item me-3 ms-2">
                             <a class="nav-link" href="http://localhost:8000/login">
-                                <font-awesome-icon icon="fa-solid fa-right-to-bracket" />
-                                <span class="ms-2">Accedi</span>
+                                <font-awesome-icon class="orange" icon="fa-solid fa-right-to-bracket" />
+                                <span class="ms-2 orange">Accedi</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8000/register">
-                                <font-awesome-icon icon="fa-regular fa-user" />
-                                <span class="ms-2">Registrati</span>
+                                <font-awesome-icon class="orange" icon="fa-regular fa-user" />
+                                <span class="ms-2 orange">Registrati</span>
                             </a>
                         </li>
                     </ul>
@@ -68,8 +69,12 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
-h2 {
+.orange {
     color: #FF9900;
+}
+
+.bg-orange {
+    background-color: #FF9900;
 }
 
 a {
