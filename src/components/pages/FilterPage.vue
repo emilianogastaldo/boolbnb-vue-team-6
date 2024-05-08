@@ -162,13 +162,9 @@ export default {
     </div>
     <!-- LISTA SPONSORIZZATI -->
     <div class="container">
-        <div
-            class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 text-decoration-none">
+        <div class="gallery text-center row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 ">
             <div v-for="flat in sponsoredFlats" :key="flat.id" class="col">
-                <div class="position-relative">
-                    <BaseCard :flat="flat" :isDetail="false" />
-                    <font-awesome-icon icon="fa-solid fa-crown" class="premium" />
-                </div>
+                <BaseCard :flat="flat" :isDetail="false" :isSponsored="true" />
             </div>
         </div>
     </div>
@@ -176,24 +172,14 @@ export default {
     <!-- LISTA NORMALI -->
     <BaseGallery :flats="nonSponsoredFlats" />
 
+    <div v-if="!nonSponsoredFlats.length" class="container">
+        <div class="alert alert-primary" role="alert">
+            <h4>Non ci sono appartamenti che rispecchiano le richieste effettuate</h4>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-.premium {
-    color: #ffd700;
-    background-color: #141155;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    padding: 8px;
-    border-radius: 50%;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 .filter {
     height: 35px;
 }

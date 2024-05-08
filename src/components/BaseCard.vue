@@ -8,7 +8,8 @@ export default {
     },
     props: {
         flat: Object,
-        isDetail: Boolean
+        isDetail: Boolean,
+        isSponsored: Boolean
     },
     computed: {
         getFormatedDistance() {
@@ -32,15 +33,18 @@ export default {
         <RouterLink v-if="!isDetail" :to="{ name: 'detail', params: { slug: flat.slug } }"
             class="text-decoration-none d-flex alig-items-center justify-content-center">
             <div class="card custom">
-                <div class="image-container">
-                    <img :src="flat.image" class="card-img rounded">
-                </div>
-                <div>
-                    <h5 class="mt-2">{{ flat.title }}</h5>
-                    <p class="card-text mb-0">{{ flat.address }}</p>
-                    <p v-if="flat.distance" class="mb-0">Distanza dall'indirizzo cercato: <span class="fw-bold">{{
-                        getFormatedDistance }}</span>
-                    </p>
+                <div class="position-relative">
+                    <div class="image-container">
+                        <img :src="flat.image" class="card-img rounded">
+                    </div>
+                    <div>
+                        <h5 class="mt-2">{{ flat.title }}</h5>
+                        <p class="card-text mb-0">{{ flat.address }}</p>
+                        <p v-if="flat.distance" class="mb-0">Distanza dall'indirizzo cercato: <span class="fw-bold">{{
+                            getFormatedDistance }}</span>
+                        </p>
+                    </div>
+                    <font-awesome-icon v-if="isSponsored" icon="fa-solid fa-crown" class="premium" />
                 </div>
             </div>
         </RouterLink>
@@ -123,6 +127,22 @@ export default {
 .image-fluid {
     width: 100%;
     height: auto;
+}
+
+.premium {
+    color: #ffd700;
+    background-color: #141155;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 8px;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(60%, -60%);
 }
 
 @media screen and (max-width: 767px) {
