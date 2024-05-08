@@ -13,7 +13,7 @@ export default {
     name: 'SearchForm',
     data: () => ({
         store,
-        address: '',
+        address: store.address,
         streetList: [],
         message: '',
         isDropdownOpen: false,

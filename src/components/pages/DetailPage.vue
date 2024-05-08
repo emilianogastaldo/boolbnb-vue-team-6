@@ -88,8 +88,10 @@ export default {
                     @closeSent="closeSent" @sendEmail="sendEmail" />
             </div>
         </div>
+        <RouterLink :to="{ name: 'filter' }" class="btn btn-primary mb-3">
+            Torna indietro
+        </RouterLink>
     </div>
-
 </template>
 
 <style lang="scss" scoped>
