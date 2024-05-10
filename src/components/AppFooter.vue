@@ -22,9 +22,7 @@ export default {
                     <h5 class="text-end orange">CHI SIAMO</h5>
                     <ul class="d-flex gap-3 justify-content-end pointer orange">
                         <li>Claudio</li>
-                        <li>Matteo</li>
                         <li>Daniele</li>
-                        <li>Emiliano</li>
                     </ul>
                 </div>
             </div>
